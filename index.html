@@ -1,0 +1,921 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFD9DF">
+<title>Arpit & Muskan · Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Quicksand:wght@400;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ivory:#FFF6EA; --blush:#FFD9DF; --rose:#F2799A; --marigold:#FFB02E;
+  --peach:#FFC9A8; --mint:#D3EEDD; --ink:#7A2E45; --ink-soft:#A65A70;
+  --radius:clamp(20px,5vw,28px); --shadow:0 14px 34px rgba(242,121,154,.28);
+  --gutter:clamp(16px,5vw,28px);
+  --font-display:'Yeseva One',Georgia,serif; --font-body:'Quicksand',system-ui,sans-serif; --font-deva:'Tiro Devanagari Hindi',serif;
+}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);color:var(--ink);line-height:1.6;overflow-x:clip;
+  background:radial-gradient(circle at 15% 10%,var(--blush),transparent 45%),radial-gradient(circle at 85% 40%,var(--peach),transparent 40%),radial-gradient(circle at 20% 90%,var(--mint),transparent 40%),var(--ivory);
+  padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.2}
+section{content-visibility:auto;contain-intrinsic-size:auto 600px;padding:clamp(48px,12vw,80px) var(--gutter);max-width:980px;margin:auto;text-align:center}
+section>h2{font-size:clamp(1.7rem,7vw,2.6rem);margin-bottom:8px}
+.sub{color:var(--ink-soft);margin-bottom:28px;font-size:clamp(.95rem,3.8vw,1.05rem)}
+.deva{font-family:var(--font-deva)}
+svg{display:block;width:100%;height:100%}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+
+/* buttons: 48px tap targets for thumbs */
+.btn{font:700 1rem var(--font-body);border:0;border-radius:999px;padding:13px 26px;min-height:48px;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,var(--rose),#F59BB0);box-shadow:var(--shadow);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s}
+.btn:active{transform:scale(.97)}
+@media (hover:hover){.btn:hover{transform:translateY(-3px) scale(1.03)}}
+.btn.alt{background:linear-gradient(135deg,var(--marigold),#FFC65C);color:var(--ink)}
+.btn.small{padding:9px 16px;min-height:42px;font-size:.88rem}
+.btn[disabled]{opacity:.7;cursor:wait;transform:none}
+
+/* petals (pure CSS shapes, no emoji) */
+#petals{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
+.petal{position:absolute;top:-30px;left:var(--x);width:var(--s);height:calc(var(--s)*1.3);background:var(--c);border-radius:100% 0 100% 0;opacity:.75;
+  animation:fall var(--d) linear var(--delay) infinite;will-change:transform}
+.paused .petal{animation-play-state:paused}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(540deg)}}
+
+/* hero 3D */
+.hero{text-align:center;min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:clamp(20px,6vw,40px) var(--gutter)}
+.stage{perspective:1100px;width:min(100%,440px);touch-action:pan-y}
+.card3d{position:relative;transform-style:preserve-3d;transition:transform .15s ease-out;
+  background:linear-gradient(160deg,#fff,var(--blush));border-radius:clamp(28px,8vw,40px);padding:clamp(34px,10vw,48px) clamp(18px,6vw,28px);
+  box-shadow:0 26px 50px rgba(242,121,154,.35),inset 0 0 0 5px var(--marigold),inset 0 0 0 8px #fff}
+.card3d.sway{animation:sway 6s ease-in-out infinite}
+@keyframes sway{50%{transform:rotateY(12deg) rotateX(-5deg)}0%,100%{transform:rotateY(-12deg) rotateX(5deg)}}
+.mandala{position:absolute;inset:14% 6%;border-radius:50%;transform:translateZ(-60px);opacity:.55;
+  background:repeating-conic-gradient(from 0deg,var(--peach) 0 10deg,transparent 10deg 20deg),radial-gradient(circle,var(--marigold),transparent 70%);animation:spin 60s linear infinite}
+@keyframes spin{to{transform:translateZ(-60px) rotate(360deg)}}
+.layer{position:relative}
+.l1{transform:translateZ(40px)}.l2{transform:translateZ(70px)}.l3{transform:translateZ(100px)}
+.om{font-size:clamp(2.2rem,9vw,2.8rem);color:var(--marigold);text-shadow:0 3px 0 #fff;line-height:1.2}
+.mantra{font-size:clamp(.92rem,3.9vw,1.05rem);line-height:1.8;margin:10px 0 2px;white-space:pre-line}
+.meaning{font-size:.76rem;font-style:italic;color:var(--ink-soft);line-height:1.4;margin-bottom:6px}
+.tagline{font-weight:700;font-style:italic;color:var(--rose);margin-top:6px}
+.names{font-size:clamp(2.1rem,11vw,3.2rem);color:var(--rose);margin:10px 0;text-shadow:0 3px 0 #fff}
+.date-pill{display:inline-block;background:var(--marigold);color:var(--ink);font-weight:700;border-radius:999px;padding:8px 20px;margin:14px 0 20px;box-shadow:0 8px 18px rgba(255,176,46,.45)}
+.deco{position:absolute;width:clamp(44px,13vw,60px);height:clamp(44px,13vw,60px);transform:translateZ(120px);animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 6px 6px rgba(242,121,154,.3))}
+.deco:nth-of-type(1){top:-12px;left:10px}.deco:nth-of-type(2){top:-10px;right:10px;animation-delay:.6s}
+.deco:nth-of-type(3){bottom:-12px;left:14px;animation-delay:1.2s}.deco:nth-of-type(4){bottom:-10px;right:14px;animation-delay:1.8s}
+@keyframes bob{50%{margin-top:-9px}}
+
+/* countdown */
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,2.5vw,14px);max-width:480px;margin:auto}
+.count div{background:#fff;border-radius:clamp(14px,4vw,22px);padding:14px 4px;box-shadow:var(--shadow)}
+.count b{display:block;font:clamp(1.4rem,7vw,2rem) var(--font-display);color:var(--rose)}
+.count span{font-size:clamp(.65rem,2.8vw,.8rem);color:var(--ink-soft)}
+
+/* events: grid on tablets+, swipeable carousel on phones */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:20px}
+.flip{-webkit-tap-highlight-color:transparent;perspective:1000px;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit;height:380px;text-align:center}
+.flip-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,1.4,.6,1)}
+.flip.is-flipped .flip-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:var(--radius);backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px;box-shadow:var(--shadow)}
+.front{background:var(--tint)}.back{background:#fff;transform:rotateY(180deg);box-shadow:var(--shadow),inset 0 0 0 4px var(--tint)}
+.art{width:110px;height:110px;margin-bottom:6px;filter:drop-shadow(0 8px 8px rgba(122,46,69,.12))}
+.face h3{font-size:clamp(1.15rem,5vw,1.35rem)}.face .day{font-weight:700;color:var(--ink-soft)}
+.hint{font-size:.8rem;opacity:.7}
+.back p{font-size:.9rem}.back .where{font-size:.82rem;font-weight:700;color:var(--rose)}
+.back .actions{margin-top:6px}
+@media (max-width:640px){
+  .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(var(--gutter)*-1);padding:6px var(--gutter) 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .grid::-webkit-scrollbar{display:none}
+  .flip{flex:0 0 78%;scroll-snap-align:center}
+}
+
+/* venue */
+.tabs{display:flex;gap:6px;background:#fff;border-radius:999px;padding:5px;box-shadow:var(--shadow);max-width:560px;margin:0 auto 18px}
+.tab{flex:1;font:700 clamp(.74rem,3.3vw,.85rem) var(--font-body);color:var(--ink-soft);background:none;border:0;border-radius:999px;padding:10px 8px;min-height:44px;cursor:pointer;transition:background .25s,color .25s}
+.tab[aria-selected=true]{background:linear-gradient(135deg,var(--rose),#F59BB0);color:#fff}
+.venue-card{background:#fff;border-radius:var(--radius);padding:clamp(10px,3vw,14px);box-shadow:var(--shadow);animation:pop .45s cubic-bezier(.3,1.4,.5,1)}
+.photo{width:100%;height:auto;aspect-ratio:2.2/1;object-fit:cover;border-radius:calc(var(--radius) - 8px);border:4px solid var(--marigold);background:var(--blush)}
+.venue-card h3{margin:14px 0 2px;font-size:clamp(1.3rem,6vw,1.6rem)}
+.venue-card .when{display:inline-block;background:var(--blush);border-radius:999px;padding:3px 14px;font-weight:700;font-size:.85rem;margin-top:8px}
+.venue-card .addr{font-size:.92rem;margin:8px 0 14px}
+.venue-card iframe{width:100%;height:clamp(240px,60vw,340px);border:0;border-radius:calc(var(--radius) - 8px);background:var(--mint);margin-bottom:14px}
+
+/* video */
+.video{aspect-ratio:16/9;max-width:720px;margin:auto;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  background:linear-gradient(135deg,var(--peach),var(--blush));display:grid;place-items:center;padding:12px}
+.video iframe{width:100%;height:100%;border:0}
+
+/* form: 16px inputs stop iOS zooming in */
+form{background:#fff;border-radius:var(--radius);padding:clamp(18px,5vw,28px);box-shadow:var(--shadow);display:grid;gap:16px;text-align:left;max-width:560px;margin:auto}
+label,legend{font-weight:700;font-size:.92rem}
+input[type=text],input[type=tel],select,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);padding:12px 14px;min-height:48px;border-radius:16px;border:2px solid var(--blush);background:var(--ivory)}
+fieldset{border:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px}
+fieldset label{font-weight:600;display:flex;gap:8px;align-items:center;padding:8px 0;min-height:44px}
+input[type=radio],input[type=checkbox]{accent-color:var(--rose);width:20px;height:20px;flex:none}
+input:user-invalid,textarea:user-invalid{border-color:var(--rose)}
+.collapse{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .4s ease,opacity .3s ease}
+.collapse.open{grid-template-rows:1fr;opacity:1}
+.collapse>div{overflow:hidden;display:grid;gap:16px;min-height:0}
+.thanks{background:#fff;border-radius:var(--radius);padding:32px 22px;box-shadow:var(--shadow);max-width:560px;margin:auto;animation:pop .5s cubic-bezier(.3,1.5,.5,1)}
+.thanks .art{margin:0 auto 4px;width:84px;height:84px}.thanks h3{font-size:1.5rem;margin:8px 0}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+footer{text-align:center;padding:36px var(--gutter) 56px;color:var(--ink-soft)}
+footer .art{width:64px;height:64px;margin:0 auto 6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}#petals{display:none}}
+</style>
+</head>
+<body>
+<div id="petals" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="stage" id="stage">
+    <div class="card3d sway" id="card">
+      <div class="mandala"></div>
+      <span class="deco" data-art="marigold" aria-hidden="true"></span><span class="deco" data-art="diya" aria-hidden="true"></span>
+      <span class="deco" data-art="lotus" aria-hidden="true"></span><span class="deco" data-art="peacock" aria-hidden="true"></span>
+      <div class="layer l1"><div class="om deva">ॐ</div><p class="deva">श्री गणेशाय नमः</p><p class="mantra deva" id="mantra"></p><p class="meaning" id="meaning"></p></div>
+      <div class="layer l2"><p>Together with our families</p><h1 class="names" id="names"></h1><p>joyfully invite you to our wedding</p><p class="tagline" id="tagline"></p></div>
+      <div class="layer l3"><span class="date-pill" id="heroDate"></span><br><a class="btn" href="#events">Open the invitation</a></div>
+    </div>
+  </div>
+</header>
+
+<section id="countdown"><h2>Counting the days</h2><p class="sub">Until we say “Saat Phere”</p><div class="count" id="count"></div></section>
+<section id="events"><h2>Celebrations</h2><p class="sub">Swipe through, tap a card to flip it, and save it to your calendar</p><div class="grid" id="eventGrid"></div>
+  <p style="margin-top:26px"><button class="btn alt" id="icsAll" type="button">Add all days to calendar (.ics)</button></p></section>
+<section id="venue"><h2>The Venues</h2><p class="sub">Come celebrate with us in style</p><div id="venueHost"></div></section>
+<section id="video"><h2>A little message for you</h2><p class="sub">Our video invitation</p><div class="video" id="videoBox"></div></section>
+<section id="rsvp"><h2>Will you join us?</h2><p class="sub" id="rsvpSub"></p><form id="rsvpForm"></form><div id="thanksHost" aria-live="polite"></div></section>
+<footer><div class="art" data-art="lotus" aria-hidden="true"></div><p class="deva">शुभ विवाह</p><p class="tagline" id="footerTagline"></p><p id="footerNote"></p></footer>
+
+<script>
+/* ==========================================================
+   1. CONFIG: the ONLY place you need to edit for content
+   ========================================================== */
+const CONFIG = {
+  couple: { groom: 'Arpit', bride: 'Muskan' },
+  hosts: 'The Families',
+  groomFirstName: 'Arpit',
+  weddingDate: '2026-12-04T18:00:00+05:30',
+  tagline: 'Your presence is all that matters to us, we would be delighted to have you celebrate with us.',
+  mantra: {
+    text: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥',
+    meaning: 'O Ganesha of the curved trunk, radiant as a million suns, remove all obstacles from our every work.',
+  },
+  rsvpEndpoint: 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE',  // see apps-script.gs
+  videoFileId: '',                                           // Drive file ID from the share link; empty = "coming soon"
+  venues: {   // order here = order of the tabs (tab = short label for phones)
+    dharmshala: {
+      name: 'Smt. Bhagwan Devi Dharmshala', tab: 'Dharmshala', days: '2 - 3 December',
+      address: 'Bombay Wala Petch, Goriabad, Aligarh, Uttar Pradesh 202001',
+      mapQuery: 'Smt. Bhagwan Devi Dharmshala, Bombay Wala Petch, Goriabad, Aligarh, Uttar Pradesh 202001',
+      mapLink: 'https://maps.app.goo.gl/AMtBPK1gdcmwoNz56?g_st=ic',
+    },
+    resort: {
+      name: 'Hotel Gayatri Palace', tab: 'Hotel Gayatri Palace', days: '4 December · Phere & Wedding', photo: 'venue.jpg',
+      address: 'Gular Road, Shakti Nagar, Gular Rd, Aligarh, Uttar Pradesh 202001',
+      mapQuery: 'Hotel Gayatri Palace, Gular Road, Shakti Nagar, Aligarh, Uttar Pradesh 202001',
+      mapLink: 'https://maps.app.goo.gl/QyT7reSNPifiT2sX9?g_st=ic',
+    },
+    mantra: {
+      name: 'Mantra Banquet Hall', tab: 'Mantra Hall', days: '5 December · Sangeet',
+      address: 'Gular Rd, Shakti Nagar, Nagla Masani, Aligarh, Uttar Pradesh 202001',
+      mapQuery: 'Mantra Banquet Hall, Gular Rd, Nagla Masani, Aligarh, Uttar Pradesh 202001',
+      mapLink: 'https://maps.app.goo.gl/Fq9xw3xbEBRnEMKS7?g_st=ic',
+    },
+  },
+  // art = illustration name from the Art object below; venue = key from venues above
+  events: [
+    { id:'day1', title:'Haldi, Mehndi & Cocktail', art:'marigold', venue:'dharmshala', tint:'#FFE3A3', start:'2026-12-02T11:00:00+05:30', end:'2026-12-02T23:00:00+05:30', blurb:'Turmeric fun, henna and giggles by day, then a glamorous cocktail evening. Wear yellow!' },
+    { id:'day2', title:'Ghudchadi & Baraat',      art:'horse',    venue:'dharmshala', tint:'#FFD0DA', start:'2026-12-03T16:00:00+05:30', end:'2026-12-03T22:00:00+05:30', blurb:'The groom mounts the mare and the baraat dances its way in.' },
+    { id:'day3', title:'Phere & Wedding Dinner',  art:'fire',     venue:'resort', tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'The sacred seven pheras around the holy fire, followed by a grand wedding dinner.' },
+    { id:'day4', title:'Sangeet Night',           art:'dholak',   venue:'mantra', tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Music, dance and performances to celebrate the newlyweds.' },
+  ],
+};
+
+/* ==========================================================
+   2. ART: hand-drawn SVG illustrations (add new ones here)
+   ========================================================== */
+const svg = inner => `<svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">${inner}</svg>`;
+const rotated = (n, tpl) => Array.from({ length:n }, (_, i) => tpl(i, i * 360 / n)).join('');
+const Art = {
+  marigold: () => svg(`${rotated(16, (i, a) => `<ellipse cx="50" cy="25" rx="7.5" ry="18" fill="${i % 2 ? '#FFC65C' : '#FFB02E'}" transform="rotate(${a} 50 50)"/>`)}
+    <circle cx="50" cy="50" r="14" fill="#F08A2E"/><circle cx="50" cy="50" r="7" fill="#FFE3A3"/>`),
+  mehndi: () => svg(`<path d="M52 12C80 20 86 54 62 74C46 88 22 80 24 58C26 44 40 40 46 48C51 55 42 63 35 58" fill="none" stroke="#C4623F" stroke-width="4.5" stroke-linecap="round"/>
+    ${[[66,26],[78,42],[79,58],[70,70],[56,80],[40,80]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.6" fill="#C4623F"/>`).join('')}
+    <circle cx="50" cy="46" r="3" fill="none" stroke="#C4623F" stroke-width="2"/>`),
+  horse: () => svg(`<path d="M30 90L36 54C33 38 42 20 60 18L65 7L71 21C83 27 89 43 84 57C81 65 71 67 65 63C61 61 57 63 57 68L61 90Z" fill="#fff" stroke="#F2799A" stroke-width="3" stroke-linejoin="round"/>
+    ${[26,36,46,56].map((y, i) => `<circle cx="${43 - i * 2}" cy="${y - 2}" r="8" fill="${i % 2 ? '#FFB02E' : '#F2799A'}"/>`).join('')}
+    <path d="M52 22L58 8L63 22Z" fill="#FFD9DF" stroke="#F2799A" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="70" cy="38" r="3.4" fill="#7A2E45"/><circle cx="75" cy="56" r="2" fill="#F2799A"/><circle cx="62" cy="48" r="5" fill="#FFC9A8" opacity=".8"/>
+    <path d="M40 66Q50 74 60 70" fill="none" stroke="#FFB02E" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 8"/>`),
+  fire: () => svg(`<path d="M50 6C64 28 78 40 74 60C72 74 62 82 50 82C38 82 28 74 26 60C22 40 38 30 50 6Z" fill="#FF9A5C"/>
+    <path d="M50 32C60 46 64 54 62 64C60 72 55 75 50 75C45 75 40 72 38 64C36 54 44 46 50 32Z" fill="#FFD166"/>
+    <path d="M50 54C55 60 56 64 54 68C53 70 51 71 50 71C49 71 47 70 46 68C44 64 45 60 50 54Z" fill="#fff"/>
+    <path d="M18 84H82L74 96H26Z" fill="#F2799A"/>${[30,42,54,66].map(x => `<circle cx="${x + 2}" cy="90" r="2.4" fill="#FFE3A3"/>`).join('')}`),
+  dholak: () => svg(`<path d="M20 40C20 30 80 30 80 40L75 74C75 86 25 86 25 74Z" fill="#FFC65C" stroke="#F2799A" stroke-width="3" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="38" rx="30" ry="9" fill="#FFF6EA" stroke="#F2799A" stroke-width="3"/>
+    <path d="M26 46L36 76M38 48L46 80M50 48V81M62 48L54 80M74 46L64 76" stroke="#F2799A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M78 22V8L92 12V26" fill="none" stroke="#F2799A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="74" cy="23" r="5" fill="#F2799A"/><circle cx="88" cy="27" r="5" fill="#F2799A"/>`),
+  diya: () => svg(`<path d="M50 8C60 24 64 30 60 40C58 46 54 48 50 48C46 48 42 46 40 40C36 30 42 22 50 8Z" fill="#FFB02E"/><path d="M50 26C55 34 56 38 54 42C53 44 51 45 50 45C49 45 47 44 46 42C44 38 46 33 50 26Z" fill="#FFF6EA"/>
+    <path d="M14 56H86C86 76 70 88 50 88C30 88 14 76 14 56Z" fill="#F2799A"/><path d="M22 62H78" stroke="#FFD9DF" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/>`),
+  lotus: () => svg(`${[-62,-31,0,31,62].map((a, i) => `<ellipse cx="50" cy="48" rx="11" ry="30" fill="${i % 2 ? '#F59BB0' : '#F2799A'}" transform="rotate(${a} 50 82)"/>`).join('')}
+    <ellipse cx="50" cy="50" rx="10" ry="30" fill="#FFD9DF" stroke="#F2799A" stroke-width="2"/><path d="M14 86Q50 98 86 86" fill="none" stroke="#9ED8B4" stroke-width="5" stroke-linecap="round"/>`),
+  peacock: () => svg(`${[-40,-20,0,20,40].map(a => `<g transform="rotate(${a} 50 90)"><ellipse cx="50" cy="38" rx="10" ry="22" fill="#9ED8B4"/><ellipse cx="50" cy="34" rx="5.5" ry="9" fill="#FFB02E"/><circle cx="50" cy="32" r="3" fill="#F2799A"/></g>`).join('')}
+    <ellipse cx="50" cy="82" rx="11" ry="13" fill="#7CCBA0"/><circle cx="50" cy="66" r="7" fill="#7CCBA0"/><path d="M50 58L47 52M50 58L53 52" stroke="#F2799A" stroke-width="2" stroke-linecap="round"/><circle cx="52" cy="65" r="1.6" fill="#7A2E45"/>`),
+  heart: () => svg('<path d="M50 86C12 58 12 26 33 22C44 20 50 29 50 33C50 29 56 20 67 22C88 26 88 58 50 86Z" fill="#F2799A"/><path d="M30 34C32 30 37 30 39 33" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>'),
+};
+
+/* ==========================================================
+   3. HELPERS: formatters are created once and reused (fast)
+   ========================================================== */
+const pad = n => String(n).padStart(2, '0');
+const IST = { timeZone:'Asia/Kolkata' };
+const dayFmt  = new Intl.DateTimeFormat('en-IN', { weekday:'long', day:'numeric', month:'long', ...IST });
+const timeFmt = new Intl.DateTimeFormat('en-IN', { hour:'numeric', minute:'2-digit', ...IST });
+const fmtDay  = iso => dayFmt.format(new Date(iso));
+const fmtTime = iso => timeFmt.format(new Date(iso));
+const toStamp = d => new Date(d).toISOString().replace(/[-:]|\.\d{3}/g, ''); // 20261204T123000Z
+const $ = id => document.getElementById(id);
+
+class CalendarService {
+  constructor(venues, couple) { this.venues = venues; this.title = `${couple.groom} & ${couple.bride}`; }
+  where(ev) { const v = this.venues[ev.venue]; return `${v.name}, ${v.address}`; }
+  googleUrl(ev) {
+    return 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
+      action:'TEMPLATE', text:`${ev.title} · ${this.title}`, details:ev.blurb,
+      dates:`${toStamp(ev.start)}/${toStamp(ev.end)}`, location:this.where(ev) });
+  }
+  downloadIcs(events) {
+    const stamp = toStamp(new Date());
+    const body = events.map(ev => ['BEGIN:VEVENT', `UID:${ev.id}@wedding-invite`, `DTSTAMP:${stamp}`,
+      `DTSTART:${toStamp(ev.start)}`, `DTEND:${toStamp(ev.end)}`, `SUMMARY:${ev.title} · ${this.title}`,
+      `DESCRIPTION:${ev.blurb}`, `LOCATION:${this.where(ev).replace(/,/g, '\\,')}`, 'END:VEVENT'].join('\r\n')).join('\r\n');
+    const url = URL.createObjectURL(new Blob([`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Wedding//EN\r\n${body}\r\nEND:VCALENDAR`], { type:'text/calendar' }));
+    Object.assign(document.createElement('a'), { href:url, download:'wedding-invite.ics' }).click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+}
+
+class RsvpService {
+  constructor(endpoint) { this.endpoint = endpoint; }
+  get isConfigured() { return this.endpoint.startsWith('https://'); }
+  async submit(data) {
+    if (!this.isConfigured) return;
+    // text/plain + no-cors skips the CORS preflight: one fast round trip
+    await fetch(this.endpoint, { method:'POST', mode:'no-cors', headers:{ 'Content-Type':'text/plain' }, body:JSON.stringify(data) });
+  }
+}
+
+/* ==========================================================
+   5. EFFECTS: small, independent, reusable
+   ========================================================== */
+class TiltEffect {
+  constructor(stage, card, max = 16) {
+    Object.assign(this, { stage, card, max, raf: 0, rect: null, rx: 0, ry: 0 });
+    stage.addEventListener('pointerenter', () => { this.rect = stage.getBoundingClientRect(); card.classList.remove('sway'); });
+    stage.addEventListener('pointermove', e => this.#queue(e));
+    ['pointerleave', 'pointercancel'].forEach(t => stage.addEventListener(t, () => { card.style.transform = ''; }));
+  }
+  #queue(e) {                       // one DOM write per frame, never more
+    const r = this.rect || (this.rect = this.stage.getBoundingClientRect());
+    this.ry = ((e.clientX - r.left) / r.width - .5) * this.max * 2;
+    this.rx = -((e.clientY - r.top) / r.height - .5) * this.max * 2;
+    this.raf ||= requestAnimationFrame(() => { this.raf = 0; this.card.style.transform = `rotateY(${this.ry}deg) rotateX(${this.rx}deg)`; });
+  }
+}
+
+class PetalField {
+  static COLORS = ['#F2799A', '#FFB02E', '#FFC9A8', '#F59BB0'];
+  constructor(host) {
+    const count = matchMedia('(max-width:600px)').matches ? 8 : 14; // fewer on phones = smoother
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('span'); p.className = 'petal';
+      p.style.cssText = `--c:${PetalField.COLORS[i % 4]};--x:${Math.random()*100}%;--s:${10+Math.random()*10}px;--d:${9+Math.random()*9}s;--delay:${-Math.random()*14}s;--drift:${(Math.random()-.5)*160}px`;
+      frag.appendChild(p);
+    }
+    host.appendChild(frag);
+    document.addEventListener('visibilitychange', () => host.classList.toggle('paused', document.hidden)); // save battery
+  }
+}
+
+class Countdown {
+  constructor(host, target) {
+    this.target = new Date(target); this.host = host;
+    host.innerHTML = ['Days','Hours','Mins','Secs'].map(l => `<div><b>00</b><span>${l}</span></div>`).join('');
+    this.nodes = [...host.querySelectorAll('b')];
+    this.tick(); this.timer = setInterval(() => this.tick(), 1000);
+  }
+  tick() {
+    const s = Math.max(0, Math.floor((this.target - Date.now()) / 1000));
+    if (!s) { clearInterval(this.timer); this.host.textContent = 'Today is the day!'; return; }
+    [Math.floor(s/86400), Math.floor(s/3600)%24, Math.floor(s/60)%60, s%60]
+      .forEach((v, i) => { const t = pad(v); if (this.nodes[i].textContent !== t) this.nodes[i].textContent = t; }); // touch DOM only on change
+  }
+}
+
+class InvitationView {
+  constructor(cfg, calendar, rsvp) { this.cfg = cfg; this.calendar = calendar; this.rsvp = rsvp; }
+  render() {
+    const { couple, weddingDate, hosts, mantra, tagline } = this.cfg;
+    document.querySelectorAll('[data-art]').forEach(n => { n.innerHTML = Art[n.dataset.art](); });
+    $('names').innerHTML = `${couple.groom}<br>&amp;<br>${couple.bride}`;
+    $('mantra').textContent = mantra.text; $('meaning').textContent = mantra.meaning;
+    [$('tagline'), $('footerTagline')].forEach(n => { n.textContent = tagline; });
+    $('rsvpSub').textContent = tagline + '. Please let us know if you can join.';
+    $('heroDate').textContent = `${fmtDay(weddingDate)}, 2026`;
+    $('footerNote').textContent = `With love, ${hosts} · ${couple.groom} & ${couple.bride}`;
+    this.#events(); this.#venues(); this.#video(); this.#form();
+  }
+  #events() {
+    const { events, venues } = this.cfg;
+    $('eventGrid').innerHTML = events.map(ev => `
+      <button class="flip" type="button" data-flip aria-pressed="false" style="--tint:${ev.tint}">
+        <span class="flip-inner">
+          <span class="face front"><span class="art">${Art[ev.art]()}</span><h3>${ev.title}</h3><span class="day">${fmtDay(ev.start)}</span><span class="hint">tap to flip</span></span>
+          <span class="face back"><h3>${ev.title}</h3><span class="day">${fmtTime(ev.start)} onwards</span><span class="where">${venues[ev.venue].name}</span><p>${ev.blurb}</p>
+            <span class="actions"><a class="btn small" target="_blank" rel="noopener" href="${this.calendar.googleUrl(ev)}">Add to Google Calendar</a></span></span>
+        </span>
+      </button>`).join('');
+    $('eventGrid').addEventListener('click', e => {           // one delegated listener for all cards
+      if (e.target.closest('a')) return;                      // calendar link: don't flip back
+      const card = e.target.closest('[data-flip]'); if (!card) return;
+      card.setAttribute('aria-pressed', card.classList.toggle('is-flipped'));
+    });
+    $('icsAll').addEventListener('click', () => this.calendar.downloadIcs(events));
+  }
+  #venues() {
+    const { venues } = this.cfg, keys = Object.keys(venues), host = $('venueHost');
+    host.innerHTML = `<div class="tabs" role="tablist">${keys.map(k => `<button class="tab" role="tab" type="button" data-venue="${k}">${venues[k].tab || venues[k].name}</button>`).join('')}</div><div id="venuePanel" role="tabpanel"></div>`;
+    const tabs = [...host.querySelectorAll('.tab')];
+    const show = k => {                                       // map is created only for the venue being viewed
+      tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.venue === k));
+      $('venuePanel').innerHTML = this.#venueCard(venues[k]);
+    };
+    host.querySelector('.tabs').addEventListener('click', e => { const t = e.target.closest('[data-venue]'); if (t) show(t.dataset.venue); });
+    show(keys[0]);
+  }
+  #venueCard({ name, address, days, photo, mapQuery, mapLink }) {
+    const q = encodeURIComponent(mapQuery);
+    return `<div class="venue-card">
+      ${photo ? `<img class="photo" src="${photo}" alt="${name}" loading="lazy" decoding="async">` : ''}
+      <h3>${name}</h3><span class="when">${days}</span><p class="addr">${address}</p>
+      <iframe loading="lazy" title="Map of ${name}" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>
+      <a class="btn" target="_blank" rel="noopener" href="${mapLink}">Get directions</a></div>`;
+  }
+  #video() {
+    const id = this.cfg.videoFileId, box = $('videoBox');
+    box.innerHTML = '<button class="btn alt" id="play" type="button">▶ Play our video</button>'; // player loads only on tap
+    $('play').addEventListener('click', () => { box.innerHTML = id
+      ? `<iframe allow="autoplay" allowfullscreen title="Video invitation" src="https://drive.google.com/file/d/${id}/preview"></iframe>`
+      : '<p>Our video card is coming soon</p>'; });
+  }
+  #form() {
+    const form = $('rsvpForm');
+    const evs = this.cfg.events.map(e => `<label><input type="checkbox" name="events" value="${e.title}" checked> ${e.title}</label>`).join('');
+    form.innerHTML = `
+      <div><label for="name">Your name</label><input id="name" name="name" type="text" required autocomplete="name"></div>
+      <div><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="So we can reach you"></div>
+      <fieldset><legend>Can you make it?</legend>
+        <label><input type="radio" name="attending" value="Yes" checked> Joyfully yes</label>
+        <label><input type="radio" name="attending" value="No"> Sadly no</label></fieldset>
+      <div class="collapse open" id="yesBlock"><div>
+        <div><label for="guests">Number of guests (including you)</label><select id="guests" name="guests">${[1,2,3,4,5,6].map(n => `<option>${n}</option>`).join('')}</select></div>
+        <fieldset><legend>Which celebrations?</legend>${evs}</fieldset></div></div>
+      <div class="collapse" id="noBlock" inert><div>
+        <div><label for="reason">A small reason, please</label><textarea id="reason" name="reason" rows="2" placeholder="Just a line is enough"></textarea></div></div></div>
+      <div><label for="message">Message for the couple</label><textarea id="message" name="message" rows="2"></textarea></div>
+      <button class="btn" type="submit" id="send">Send RSVP</button>`;
+    form.addEventListener('change', e => { if (e.target.name === 'attending') this.#toggleNo(e.target.value === 'No'); });
+    form.addEventListener('submit', e => this.#submit(e));
+  }
+  #toggleNo(isNo) {                  // smooth swap between "yes" and "no" questions
+    $('yesBlock').classList.toggle('open', !isNo); $('yesBlock').inert = isNo;
+    $('noBlock').classList.toggle('open', isNo);   $('noBlock').inert = !isNo;
+    $('reason').required = isNo; $('phone').required = isNo;
+    if (isNo) setTimeout(() => $('reason').focus({ preventScroll:true }), 400);
+  }
+  async #submit(e) {
+    e.preventDefault();
+    const f = new FormData(e.target), btn = $('send'), isNo = f.get('attending') === 'No';
+    const data = { name:f.get('name').trim(), phone:f.get('phone').trim(), attending:isNo ? 'No' : 'Yes',
+      guests:isNo ? 0 : f.get('guests'), events:isNo ? [] : f.getAll('events'), reason:isNo ? f.get('reason').trim() : '', message:f.get('message').trim() };
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try { await this.rsvp.submit(data); this.#thanks(data, isNo); }
+    catch { btn.disabled = false; btn.textContent = 'Try again'; alert('Could not send. Please check your internet and try again.'); }
+  }
+  #thanks({ name }, isNo) {
+    const groom = this.cfg.groomFirstName;
+    const [art, title, text] = isNo
+      ? ['heart', `We'll miss you, ${name}`, `You will get a call from ${groom} to handle this!`]
+      : ['lotus', `Thank you, ${name}!`, 'Your reply has reached us. Really Happy to have you there! See you at the celebrations!'];
+    const demo = this.rsvp.isConfigured ? '' : '<p class="sub" style="margin:12px 0 0">(Demo mode: connect your Google Sheet to save replies.)</p>';
+    $('rsvpForm').hidden = true;
+    $('thanksHost').innerHTML = `<div class="thanks"><div class="art">${Art[art]()}</div><h3>${title}</h3><p>${text}</p>${demo}</div>`;
+    $('thanksHost').scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+}
+
+(function main() {
+  const { couple, venues, weddingDate, rsvpEndpoint } = CONFIG;
+  new InvitationView(CONFIG, new CalendarService(venues, couple), new RsvpService(rsvpEndpoint)).render();
+  new TiltEffect($('stage'), $('card'));
+  new PetalField($('petals'));
+  new Countdown($('count'), weddingDate);
+})();
+</script>
+</body>
+</html> -->
+
+<!-- ==========================================================
+   second view
+========================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFD9DF">
+<title>Arpit & Muskan · Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Yeseva+One&family=Quicksand:wght@400;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+/* ===== THEME TOKENS: change colours here only (all light & warm) ===== */
+:root{
+  --ivory:#FFF6EA; --blush:#FFD9DF; --rose:#F2799A; --marigold:#FFB02E;
+  --peach:#FFC9A8; --mint:#D3EEDD; --ink:#7A2E45; --ink-soft:#A65A70;
+  --radius:clamp(20px,5vw,28px); --shadow:0 14px 34px rgba(242,121,154,.28);
+  --gutter:clamp(16px,5vw,28px);
+  --font-display:'Yeseva One',Georgia,serif; --font-body:'Quicksand',system-ui,sans-serif; --font-deva:'Tiro Devanagari Hindi',serif; --font-script:'Allura','Brush Script MT',cursive;
+}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);color:var(--ink);line-height:1.6;overflow-x:clip;
+  background:radial-gradient(circle at 15% 10%,var(--blush),transparent 45%),radial-gradient(circle at 85% 40%,var(--peach),transparent 40%),radial-gradient(circle at 20% 90%,var(--mint),transparent 40%),var(--ivory);
+  padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.2}
+section{content-visibility:auto;contain-intrinsic-size:auto 600px;padding:clamp(48px,12vw,80px) var(--gutter);max-width:980px;margin:auto;text-align:center}
+section>h2{font-size:clamp(1.7rem,7vw,2.6rem);margin-bottom:8px}
+.sub{color:var(--ink-soft);margin-bottom:28px;font-size:clamp(.95rem,3.8vw,1.05rem)}
+.deva{font-family:var(--font-deva)}
+/* childhood photo as a soft, warm watermark behind the whole invitation */
+.watermark{position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(watermark.jpg) center 30%/cover no-repeat;opacity:.2;
+  filter:sepia(.75) saturate(1.3) brightness(1.2) contrast(.9);transform:translateZ(0);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 45%,transparent 92%);mask-image:radial-gradient(ellipse at center,#000 45%,transparent 92%)}
+svg{display:block;width:100%;height:100%}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+
+/* buttons: 48px tap targets for thumbs */
+.btn{font:700 1rem var(--font-body);border:0;border-radius:999px;padding:13px 26px;min-height:48px;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,var(--rose),#F59BB0);box-shadow:var(--shadow);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s}
+.btn:active{transform:scale(.97)}
+@media (hover:hover){.btn:hover{transform:translateY(-3px) scale(1.03)}}
+.btn.alt{background:linear-gradient(135deg,var(--marigold),#FFC65C);color:var(--ink)}
+.btn.small{padding:9px 16px;min-height:42px;font-size:.88rem}
+.btn[disabled]{opacity:.7;cursor:wait;transform:none}
+
+/* petals (pure CSS shapes, no emoji) */
+#petals{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
+.petal{position:absolute;top:-30px;left:var(--x);width:var(--s);height:calc(var(--s)*1.3);background:var(--c);border-radius:100% 0 100% 0;opacity:.75;
+  animation:fall var(--d) linear var(--delay) infinite;will-change:transform}
+.paused .petal{animation-play-state:paused}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(540deg)}}
+
+/* hero 3D */
+.hero{text-align:center;min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:clamp(20px,6vw,40px) var(--gutter)}
+.stage{perspective:1100px;width:min(100%,440px);touch-action:pan-y}
+.card3d{position:relative;transform-style:preserve-3d;transition:transform .15s ease-out;
+  background:linear-gradient(160deg,#fff,var(--blush));border-radius:clamp(28px,8vw,40px);padding:clamp(34px,10vw,48px) clamp(18px,6vw,28px);
+  box-shadow:0 26px 50px rgba(242,121,154,.35),inset 0 0 0 5px var(--marigold),inset 0 0 0 8px #fff}
+.card3d.sway{animation:sway 6s ease-in-out infinite}
+@keyframes sway{50%{transform:rotateY(12deg) rotateX(-5deg)}0%,100%{transform:rotateY(-12deg) rotateX(5deg)}}
+.mandala{position:absolute;inset:14% 6%;border-radius:50%;transform:translateZ(-60px);opacity:.55;
+  background:repeating-conic-gradient(from 0deg,var(--peach) 0 10deg,transparent 10deg 20deg),radial-gradient(circle,var(--marigold),transparent 70%);animation:spin 60s linear infinite}
+@keyframes spin{to{transform:translateZ(-60px) rotate(360deg)}}
+.layer{position:relative}
+.l1{transform:translateZ(40px)}.l2{transform:translateZ(70px)}.l3{transform:translateZ(100px)}
+.om{font-size:clamp(2.2rem,9vw,2.8rem);color:var(--marigold);text-shadow:0 3px 0 #fff;line-height:1.2}
+.mantra{font-size:clamp(.92rem,3.9vw,1.05rem);line-height:1.8;margin:10px 0 2px;white-space:pre-line}
+.meaning{font-size:.76rem;font-style:italic;color:var(--ink-soft);line-height:1.4;margin-bottom:6px}
+.tagline{font-weight:700;font-style:italic;color:var(--rose);margin-top:6px}
+.names{font-family:var(--font-script);font-size:clamp(3.4rem,19vw,5.2rem);line-height:1.02;color:var(--rose);margin:6px 0 10px;text-shadow:0 3px 0 #fff}
+.script{font-family:var(--font-script);font-size:1.5em;color:var(--rose);line-height:1}
+.date-pill{display:inline-block;background:var(--marigold);color:var(--ink);font-weight:700;border-radius:999px;padding:8px 20px;margin:14px 0 20px;box-shadow:0 8px 18px rgba(255,176,46,.45)}
+.deco{position:absolute;width:clamp(44px,13vw,60px);height:clamp(44px,13vw,60px);transform:translateZ(120px);animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 6px 6px rgba(242,121,154,.3))}
+.deco:nth-of-type(1){top:-12px;left:10px}.deco:nth-of-type(2){top:-10px;right:10px;animation-delay:.6s}
+.deco:nth-of-type(3){bottom:-12px;left:14px;animation-delay:1.2s}.deco:nth-of-type(4){bottom:-10px;right:14px;animation-delay:1.8s}
+@keyframes bob{50%{margin-top:-9px}}
+
+/* countdown */
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,2.5vw,14px);max-width:480px;margin:auto}
+.count div{background:#fff;border-radius:clamp(14px,4vw,22px);padding:14px 4px;box-shadow:var(--shadow)}
+.count b{display:block;font:clamp(1.4rem,7vw,2rem) var(--font-display);color:var(--rose)}
+.count span{font-size:clamp(.65rem,2.8vw,.8rem);color:var(--ink-soft)}
+
+/* events: grid on tablets+, swipeable carousel on phones */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:20px}
+.flip{-webkit-tap-highlight-color:transparent;perspective:1000px;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit;height:400px;text-align:center}
+.flip-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,1.4,.6,1)}
+.flip.is-flipped .flip-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:var(--radius);backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px;box-shadow:var(--shadow)}
+.front{background:var(--tint)}.back{background:#fff;transform:rotateY(180deg);box-shadow:var(--shadow),inset 0 0 0 4px var(--tint)}
+.art{width:110px;height:110px;margin-bottom:6px;filter:drop-shadow(0 8px 8px rgba(122,46,69,.12))}
+.face h3{font-size:clamp(1.15rem,5vw,1.35rem)}.face .day{font-weight:700;color:var(--ink-soft)}
+.official{font-size:.85rem;font-weight:600;color:var(--ink-soft)}
+.dict{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;text-align:left}
+.word{background:#fff;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border-top:6px solid var(--tint)}
+.word h3{font-size:1.35rem}.word .say{font-style:italic;color:var(--ink-soft);font-size:.85rem}
+.word p{font-size:.93rem;margin-top:6px}
+.chip{display:inline-block;background:var(--blush);border-radius:999px;padding:2px 12px;font-size:.78rem;font-weight:700;margin-top:10px}
+.chip.venue-chip{background:#fff;border:1px solid var(--tint)}
+.hint{font-size:.8rem;opacity:.7}
+.back p{font-size:.9rem}.back .where{font-size:.82rem;font-weight:700;color:var(--rose)}
+.back .actions{margin-top:6px}
+@media (max-width:640px){
+  .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(var(--gutter)*-1);padding:6px var(--gutter) 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .grid::-webkit-scrollbar{display:none}
+  .flip{flex:0 0 78%;scroll-snap-align:center}
+}
+
+/* venue */
+.tabs{display:flex;gap:6px;background:#fff;border-radius:999px;padding:5px;box-shadow:var(--shadow);max-width:560px;margin:0 auto 18px}
+.tab{flex:1;font:700 clamp(.74rem,3.3vw,.85rem) var(--font-body);color:var(--ink-soft);background:none;border:0;border-radius:999px;padding:10px 8px;min-height:44px;cursor:pointer;transition:background .25s,color .25s}
+.tab[aria-selected=true]{background:linear-gradient(135deg,var(--rose),#F59BB0);color:#fff}
+.venue-card{background:#fff;border-radius:var(--radius);padding:clamp(10px,3vw,14px);box-shadow:var(--shadow);animation:pop .45s cubic-bezier(.3,1.4,.5,1)}
+.photo{width:100%;height:auto;aspect-ratio:2.2/1;object-fit:cover;border-radius:calc(var(--radius) - 8px);border:4px solid var(--marigold);background:var(--blush)}
+.venue-card h3{margin:14px 0 2px;font-size:clamp(1.3rem,6vw,1.6rem)}
+.venue-card .when{display:inline-block;background:var(--blush);border-radius:999px;padding:3px 14px;font-weight:700;font-size:.85rem;margin-top:8px}
+.venue-card .addr{font-size:.92rem;margin:8px 0 14px}
+.venue-card iframe{width:100%;height:clamp(240px,60vw,340px);border:0;border-radius:calc(var(--radius) - 8px);background:var(--mint);margin-bottom:14px}
+
+/* video */
+.video{aspect-ratio:16/9;max-width:720px;margin:auto;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  background:linear-gradient(135deg,var(--peach),var(--blush));display:grid;place-items:center;padding:12px}
+.video iframe{width:100%;height:100%;border:0}
+
+/* form: 16px inputs stop iOS zooming in */
+form{background:#fff;border-radius:var(--radius);padding:clamp(18px,5vw,28px);box-shadow:var(--shadow);display:grid;gap:16px;text-align:left;max-width:560px;margin:auto}
+label,legend{font-weight:700;font-size:.92rem}
+input[type=text],input[type=tel],select,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);padding:12px 14px;min-height:48px;border-radius:16px;border:2px solid var(--blush);background:var(--ivory)}
+fieldset{border:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px}
+fieldset label{font-weight:600;display:flex;gap:8px;align-items:center;padding:8px 0;min-height:44px}
+input[type=radio],input[type=checkbox]{accent-color:var(--rose);width:20px;height:20px;flex:none}
+input:user-invalid,textarea:user-invalid{border-color:var(--rose)}
+.collapse{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .4s ease,opacity .3s ease}
+.collapse.open{grid-template-rows:1fr;opacity:1}
+.collapse>div{overflow:hidden;display:grid;gap:16px;min-height:0}
+.thanks{background:#fff;border-radius:var(--radius);padding:32px 22px;box-shadow:var(--shadow);max-width:560px;margin:auto;animation:pop .5s cubic-bezier(.3,1.5,.5,1)}
+.thanks .art{margin:0 auto 4px;width:84px;height:84px}.thanks h3{font-size:1.5rem;margin:8px 0}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+footer{text-align:center;padding:36px var(--gutter) 56px;color:var(--ink-soft)}
+footer .art{width:64px;height:64px;margin:0 auto 6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}#petals{display:none}}
+</style>
+</head>
+<body>
+<div class="watermark" aria-hidden="true"></div>
+<div id="petals" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="stage" id="stage">
+    <div class="card3d sway" id="card">
+      <div class="mandala"></div>
+      <span class="deco" data-art="marigold" aria-hidden="true"></span><span class="deco" data-art="diya" aria-hidden="true"></span>
+      <span class="deco" data-art="lotus" aria-hidden="true"></span><span class="deco" data-art="peacock" aria-hidden="true"></span>
+      <div class="layer l1"><div class="om deva">ॐ</div><p class="deva">श्री गणेशाय नमः</p><p class="mantra deva" id="mantra"></p><p class="meaning" id="meaning"></p></div>
+      <div class="layer l2"><p>Together with our families</p><h1 class="names" id="names"></h1><p>joyfully invite you to our wedding</p><p class="tagline" id="tagline"></p></div>
+      <div class="layer l3"><span class="date-pill" id="heroDate"></span><br><a class="btn" href="#events">Open the invitation</a></div>
+    </div>
+  </div>
+</header>
+
+<section id="countdown"><h2>Counting the days</h2><p class="sub">Until we say “Saat Phere”</p><div class="count" id="count"></div></section>
+<section id="events"><h2>Celebrations</h2><p class="sub">Swipe through, tap a card to flip it, and save it to your calendar</p><div class="grid" id="eventGrid"></div>
+  <p style="margin-top:26px"><button class="btn alt" id="icsAll" type="button">Add all days to calendar (.ics)</button></p></section>
+<section id="dictionary"><h2>Wedding Dictionary</h2><p class="sub">New to desi weddings? Here’s your cheat sheet</p><div class="dict" id="dict"></div></section>
+<section id="venue"><h2>The Venues</h2><p class="sub">Come celebrate with us in style</p><div id="venueHost"></div></section>
+<section id="video"><h2>A little message for you</h2><p class="sub">Our video invitation</p><div class="video" id="videoBox"></div></section>
+<section id="rsvp"><h2>Will you join us?</h2><p class="sub" id="rsvpSub"></p><form id="rsvpForm"></form><div id="thanksHost" aria-live="polite"></div></section>
+<footer><div class="art" data-art="lotus" aria-hidden="true"></div><p class="deva">शुभ विवाह</p><p class="tagline" id="footerTagline"></p><p id="footerNote"></p></footer>
+
+<script>
+/* ==========================================================
+   1. CONFIG: the ONLY place you need to edit for content
+   ========================================================== */
+const CONFIG = {
+  couple: { groom: 'Arpit', bride: 'Muskan' },
+  hosts: 'The Families',
+  groomFirstName: 'Arpit',                                   // used in the RSVP "no" reply
+  weddingDate: '2026-12-04T18:00:00+05:30',
+  tagline: 'Your presence is all that matters to us',
+  mantra: {
+    text: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥',
+    meaning: 'O Ganesha of the curved trunk, radiant as a million suns, remove all obstacles from our every work.',
+  },
+  rsvpEndpoint: 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE',  // see apps-script.gs
+  videoFileId: '',                                           // Drive file ID from the share link; empty = "coming soon"
+  venues: {   // order here = order of the tabs (tab = short label for phones)
+    dharmshala: {
+      name: 'Smt. Bhagwan Devi Dharmshala', tab: 'Dharmshala', days: '2 – 3 December',
+      address: 'Bombay Wala Petch, Goriabad, Aligarh, Uttar Pradesh 202001',
+      mapQuery: 'Smt. Bhagwan Devi Dharmshala, Bombay Wala Petch, Goriabad, Aligarh, Uttar Pradesh 202001',
+      mapLink: 'https://maps.app.goo.gl/AMtBPK1gdcmwoNz56?g_st=ic',
+    },
+    resort: {
+      name: 'Hotel Gayatri Palace', tab: 'Hotel Gayatri Palace', days: '4 December · Phere & Wedding', photo: 'venue.jpg',
+      address: 'Gular Road, Shakti Nagar, Gular Rd, Aligarh, Uttar Pradesh 202001',
+      mapQuery: 'Hotel Gayatri Palace, Gular Road, Shakti Nagar, Aligarh, Uttar Pradesh 202001',
+      mapLink: 'https://maps.app.goo.gl/QyT7reSNPifiT2sX9?g_st=ic',
+    },
+    mantra: {
+      name: 'Mantra Banquet Hall', tab: 'Mantra Hall', days: '5 December · Sangeet',
+      address: 'Gular Rd, Shakti Nagar, Nagla Masani, Aligarh, Uttar Pradesh 202001',
+      mapQuery: 'Mantra Banquet Hall, Gular Rd, Nagla Masani, Aligarh, Uttar Pradesh 202001',
+      mapLink: 'https://maps.app.goo.gl/Fq9xw3xbEBRnEMKS7?g_st=ic',
+    },
+  },
+  // nick = fun name, title = traditional name, art = illustration (see Art), venue = key from venues
+  events: [
+    { id:'day1', nick:'The Golden Glow Day',  title:'Haldi, Mehndi & Cocktail', art:'marigold', venue:'dharmshala', tint:'#FFE3A3', start:'2026-12-02T11:00:00+05:30', end:'2026-12-02T23:00:00+05:30', blurb:'Get yellow, get henna-ed, then get glam! Smear turmeric, flaunt henna art, then dress up for a cocktail evening. Wear something you don’t mind staining!' },
+    { id:'day2', nick:'The Royal Entry',      title:'Ghudchadi & Baraat',       art:'horse',    venue:'dharmshala', tint:'#FFD0DA', start:'2026-12-03T16:00:00+05:30', end:'2026-12-03T22:00:00+05:30', blurb:'The groom arrives like royalty on a decorated mare while the dhol beats and everyone dances in. Two left feet are welcome!' },
+    { id:'day3', nick:'The Seven Promises',   title:'Pheras & Wedding Dinner',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Seven rounds around the sacred fire, seven promises for life. Then a big wedding feast, so come hungry!' },
+    { id:'day4', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
+  ],
+  
+  // the "Wedding Dictionary" cheat sheet; event = which day it belongs to
+  glossary: [
+    { term:'The Yellow Affair:Haldi',     say:'HUL-dee',   event:'day1', meaning:'A turmeric paste is smeared on the bride and groom for a golden glow and good luck. Yes, everyone ends up yellow!' },
+    // { term:'Mehndi',    say:'MEHN-dee',  event:'day1', meaning:'Beautiful henna art on hands and feet. Look for the groom’s name hidden in the bride’s design, and keep your hands still until it dries.' },
+    // { term:'Cocktail',  say:'',          event:'day1', meaning:'The dress-up evening: music, mingling and a toast to the couple.' },
+    { term:'The Royal Ride:Ghudchadi', say:'GHOO-dee-chuh-dee', event:'day2', meaning:'The groom hops on a decorated mare for his royal moment before heading to the wedding.' },
+    { term:'The Royal Procession: Baraat',    say:'buh-RAAT',  event:'day2', meaning:'The groom’s party dances its way to the venue with drums and dhol. Dancing is compulsory, skills are optional.' },
+    { term:'Forever, in Seven: Pheras',     say:'FAY-raas',   event:'day3', meaning:'Seven rounds around the sacred fire, and each round is a promise the couple makes to each other. The heart of the wedding.' },
+    { term:'The Royal Exchange: Varmala',     say:'VAR-mah-lah',   event:'day3', meaning:'A garland of flowers worn by the bride and groom to symbolize their union in one soul.' },
+    { term:'The Wedding Soirée: Sangeet Night',   say:'SUNG-geet', event:'day4', meaning:'A night of songs, dance-offs and family performances to celebrate the newlyweds.' },
+  ],
+};
+
+/* ==========================================================
+   2. ART: hand-drawn SVG illustrations (add new ones here)
+   ========================================================== */
+const svg = inner => `<svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">${inner}</svg>`;
+const rotated = (n, tpl) => Array.from({ length:n }, (_, i) => tpl(i, i * 360 / n)).join('');
+const Art = {
+  marigold: () => svg(`${rotated(16, (i, a) => `<ellipse cx="50" cy="25" rx="7.5" ry="18" fill="${i % 2 ? '#FFC65C' : '#FFB02E'}" transform="rotate(${a} 50 50)"/>`)}
+    <circle cx="50" cy="50" r="14" fill="#F08A2E"/><circle cx="50" cy="50" r="7" fill="#FFE3A3"/>`),
+  mehndi: () => svg(`<path d="M52 12C80 20 86 54 62 74C46 88 22 80 24 58C26 44 40 40 46 48C51 55 42 63 35 58" fill="none" stroke="#C4623F" stroke-width="4.5" stroke-linecap="round"/>
+    ${[[66,26],[78,42],[79,58],[70,70],[56,80],[40,80]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.6" fill="#C4623F"/>`).join('')}
+    <circle cx="50" cy="46" r="3" fill="none" stroke="#C4623F" stroke-width="2"/>`),
+  horse: () => svg(`<path d="M30 90L36 54C33 38 42 20 60 18L65 7L71 21C83 27 89 43 84 57C81 65 71 67 65 63C61 61 57 63 57 68L61 90Z" fill="#fff" stroke="#F2799A" stroke-width="3" stroke-linejoin="round"/>
+    ${[26,36,46,56].map((y, i) => `<circle cx="${43 - i * 2}" cy="${y - 2}" r="8" fill="${i % 2 ? '#FFB02E' : '#F2799A'}"/>`).join('')}
+    <path d="M52 22L58 8L63 22Z" fill="#FFD9DF" stroke="#F2799A" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="70" cy="38" r="3.4" fill="#7A2E45"/><circle cx="75" cy="56" r="2" fill="#F2799A"/><circle cx="62" cy="48" r="5" fill="#FFC9A8" opacity=".8"/>
+    <path d="M40 66Q50 74 60 70" fill="none" stroke="#FFB02E" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 8"/>`),
+  fire: () => svg(`<path d="M50 6C64 28 78 40 74 60C72 74 62 82 50 82C38 82 28 74 26 60C22 40 38 30 50 6Z" fill="#FF9A5C"/>
+    <path d="M50 32C60 46 64 54 62 64C60 72 55 75 50 75C45 75 40 72 38 64C36 54 44 46 50 32Z" fill="#FFD166"/>
+    <path d="M50 54C55 60 56 64 54 68C53 70 51 71 50 71C49 71 47 70 46 68C44 64 45 60 50 54Z" fill="#fff"/>
+    <path d="M18 84H82L74 96H26Z" fill="#F2799A"/>${[30,42,54,66].map(x => `<circle cx="${x + 2}" cy="90" r="2.4" fill="#FFE3A3"/>`).join('')}`),
+  dholak: () => svg(`<path d="M20 40C20 30 80 30 80 40L75 74C75 86 25 86 25 74Z" fill="#FFC65C" stroke="#F2799A" stroke-width="3" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="38" rx="30" ry="9" fill="#FFF6EA" stroke="#F2799A" stroke-width="3"/>
+    <path d="M26 46L36 76M38 48L46 80M50 48V81M62 48L54 80M74 46L64 76" stroke="#F2799A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M78 22V8L92 12V26" fill="none" stroke="#F2799A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="74" cy="23" r="5" fill="#F2799A"/><circle cx="88" cy="27" r="5" fill="#F2799A"/>`),
+  diya: () => svg(`<path d="M50 8C60 24 64 30 60 40C58 46 54 48 50 48C46 48 42 46 40 40C36 30 42 22 50 8Z" fill="#FFB02E"/><path d="M50 26C55 34 56 38 54 42C53 44 51 45 50 45C49 45 47 44 46 42C44 38 46 33 50 26Z" fill="#FFF6EA"/>
+    <path d="M14 56H86C86 76 70 88 50 88C30 88 14 76 14 56Z" fill="#F2799A"/><path d="M22 62H78" stroke="#FFD9DF" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/>`),
+  lotus: () => svg(`${[-62,-31,0,31,62].map((a, i) => `<ellipse cx="50" cy="48" rx="11" ry="30" fill="${i % 2 ? '#F59BB0' : '#F2799A'}" transform="rotate(${a} 50 82)"/>`).join('')}
+    <ellipse cx="50" cy="50" rx="10" ry="30" fill="#FFD9DF" stroke="#F2799A" stroke-width="2"/><path d="M14 86Q50 98 86 86" fill="none" stroke="#9ED8B4" stroke-width="5" stroke-linecap="round"/>`),
+  peacock: () => svg(`${[-40,-20,0,20,40].map(a => `<g transform="rotate(${a} 50 90)"><ellipse cx="50" cy="38" rx="10" ry="22" fill="#9ED8B4"/><ellipse cx="50" cy="34" rx="5.5" ry="9" fill="#FFB02E"/><circle cx="50" cy="32" r="3" fill="#F2799A"/></g>`).join('')}
+    <ellipse cx="50" cy="82" rx="11" ry="13" fill="#7CCBA0"/><circle cx="50" cy="66" r="7" fill="#7CCBA0"/><path d="M50 58L47 52M50 58L53 52" stroke="#F2799A" stroke-width="2" stroke-linecap="round"/><circle cx="52" cy="65" r="1.6" fill="#7A2E45"/>`),
+  heart: () => svg('<path d="M50 86C12 58 12 26 33 22C44 20 50 29 50 33C50 29 56 20 67 22C88 26 88 58 50 86Z" fill="#F2799A"/><path d="M30 34C32 30 37 30 39 33" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>'),
+};
+
+/* ==========================================================
+   3. HELPERS: formatters are created once and reused (fast)
+   ========================================================== */
+const pad = n => String(n).padStart(2, '0');
+const IST = { timeZone:'Asia/Kolkata' };
+const dayFmt  = new Intl.DateTimeFormat('en-IN', { weekday:'long', day:'numeric', month:'long', ...IST });
+const timeFmt = new Intl.DateTimeFormat('en-IN', { hour:'numeric', minute:'2-digit', ...IST });
+const shortFmt = new Intl.DateTimeFormat('en-IN', { day:'numeric', month:'short', ...IST });
+const fmtDay  = iso => dayFmt.format(new Date(iso));
+const fmtTime = iso => timeFmt.format(new Date(iso));
+const toStamp = d => new Date(d).toISOString().replace(/[-:]|\.\d{3}/g, ''); // 20261204T123000Z
+const $ = id => document.getElementById(id);
+
+/* ==========================================================
+   4. SERVICES: one responsibility per class
+   ========================================================== */
+class CalendarService {
+  constructor(venues, couple) { this.venues = venues; this.title = `${couple.groom} & ${couple.bride}`; }
+  where(ev) { const v = this.venues[ev.venue]; return `${v.name}, ${v.address}`; }
+  googleUrl(ev) {
+    return 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
+      action:'TEMPLATE', text:`${ev.nick} (${ev.title}) · ${this.title}`, details:ev.blurb,
+      dates:`${toStamp(ev.start)}/${toStamp(ev.end)}`, location:this.where(ev) });
+  }
+  downloadIcs(events) {
+    const stamp = toStamp(new Date());
+    const body = events.map(ev => ['BEGIN:VEVENT', `UID:${ev.id}@wedding-invite`, `DTSTAMP:${stamp}`,
+      `DTSTART:${toStamp(ev.start)}`, `DTEND:${toStamp(ev.end)}`, `SUMMARY:${ev.title} · ${this.title}`,
+      `DESCRIPTION:${ev.blurb}`, `LOCATION:${this.where(ev).replace(/,/g, '\\,')}`, 'END:VEVENT'].join('\r\n')).join('\r\n');
+    const url = URL.createObjectURL(new Blob([`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Wedding//EN\r\n${body}\r\nEND:VCALENDAR`], { type:'text/calendar' }));
+    Object.assign(document.createElement('a'), { href:url, download:'wedding-invite.ics' }).click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+}
+
+class RsvpService {
+  constructor(endpoint) { this.endpoint = endpoint; }
+  get isConfigured() { return this.endpoint.startsWith('https://'); }
+  async submit(data) {
+    if (!this.isConfigured) return;
+    // text/plain + no-cors skips the CORS preflight: one fast round trip
+    await fetch(this.endpoint, { method:'POST', mode:'no-cors', headers:{ 'Content-Type':'text/plain' }, body:JSON.stringify(data) });
+  }
+}
+
+/* ==========================================================
+   5. EFFECTS: small, independent, reusable
+   ========================================================== */
+class TiltEffect {
+  constructor(stage, card, max = 16) {
+    Object.assign(this, { stage, card, max, raf: 0, rect: null, rx: 0, ry: 0 });
+    stage.addEventListener('pointerenter', () => { this.rect = stage.getBoundingClientRect(); card.classList.remove('sway'); });
+    stage.addEventListener('pointermove', e => this.#queue(e));
+    ['pointerleave', 'pointercancel'].forEach(t => stage.addEventListener(t, () => { card.style.transform = ''; }));
+  }
+  #queue(e) {                       // one DOM write per frame, never more
+    const r = this.rect || (this.rect = this.stage.getBoundingClientRect());
+    this.ry = ((e.clientX - r.left) / r.width - .5) * this.max * 2;
+    this.rx = -((e.clientY - r.top) / r.height - .5) * this.max * 2;
+    this.raf ||= requestAnimationFrame(() => { this.raf = 0; this.card.style.transform = `rotateY(${this.ry}deg) rotateX(${this.rx}deg)`; });
+  }
+}
+
+class PetalField {
+  static COLORS = ['#F2799A', '#FFB02E', '#FFC9A8', '#F59BB0'];
+  constructor(host) {
+    const count = matchMedia('(max-width:600px)').matches ? 8 : 14; // fewer on phones = smoother
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('span'); p.className = 'petal';
+      p.style.cssText = `--c:${PetalField.COLORS[i % 4]};--x:${Math.random()*100}%;--s:${10+Math.random()*10}px;--d:${9+Math.random()*9}s;--delay:${-Math.random()*14}s;--drift:${(Math.random()-.5)*160}px`;
+      frag.appendChild(p);
+    }
+    host.appendChild(frag);
+    document.addEventListener('visibilitychange', () => host.classList.toggle('paused', document.hidden)); // save battery
+  }
+}
+
+class Countdown {
+  constructor(host, target) {
+    this.target = new Date(target); this.host = host;
+    host.innerHTML = ['Days','Hours','Mins','Secs'].map(l => `<div><b>00</b><span>${l}</span></div>`).join('');
+    this.nodes = [...host.querySelectorAll('b')];
+    this.tick(); this.timer = setInterval(() => this.tick(), 1000);
+  }
+  tick() {
+    const s = Math.max(0, Math.floor((this.target - Date.now()) / 1000));
+    if (!s) { clearInterval(this.timer); this.host.textContent = 'Today is the day!'; return; }
+    [Math.floor(s/86400), Math.floor(s/3600)%24, Math.floor(s/60)%60, s%60]
+      .forEach((v, i) => { const t = pad(v); if (this.nodes[i].textContent !== t) this.nodes[i].textContent = t; }); // touch DOM only on change
+  }
+}
+
+/* ==========================================================
+   6. VIEW: builds the page from CONFIG
+   ========================================================== */
+class InvitationView {
+  constructor(cfg, calendar, rsvp) { this.cfg = cfg; this.calendar = calendar; this.rsvp = rsvp; }
+  render() {
+    const { couple, weddingDate, hosts, mantra, tagline } = this.cfg;
+    document.querySelectorAll('[data-art]').forEach(n => { n.innerHTML = Art[n.dataset.art](); });
+    $('names').innerHTML = `${couple.groom}<br>&amp;<br>${couple.bride}`;
+    $('mantra').textContent = mantra.text; $('meaning').textContent = mantra.meaning;
+    [$('tagline'), $('footerTagline')].forEach(n => { n.textContent = tagline; });
+    $('rsvpSub').textContent = tagline + '. Please let us know if you can join.';
+    $('heroDate').textContent = `${fmtDay(weddingDate)}, 2026`;
+    $('footerNote').innerHTML = `With love, ${hosts}<br><span class="script">${couple.groom} &amp; ${couple.bride}</span>`;
+    this.#events(); this.#glossary(); this.#venues(); this.#video(); this.#form();
+  }
+  #events() {
+    const { events, venues } = this.cfg;
+    $('eventGrid').innerHTML = events.map(ev => `
+      <button class="flip" type="button" data-flip aria-pressed="false" style="--tint:${ev.tint}">
+        <span class="flip-inner">
+          <span class="face front"><span class="art">${Art[ev.art]()}</span><h3>${ev.nick}</h3><span class="official">${ev.title}</span><span class="day">${fmtDay(ev.start)}</span><span class="hint">tap to flip</span></span>
+          <span class="face back"><h3>${ev.nick}</h3><span class="day">${fmtTime(ev.start)} onwards</span><span class="where">${venues[ev.venue].name}</span><p>${ev.blurb}</p>
+            <span class="actions"><a class="btn small" target="_blank" rel="noopener" href="${this.calendar.googleUrl(ev)}">Add to Google Calendar</a></span></span>
+        </span>
+      </button>`).join('');
+    $('eventGrid').addEventListener('click', e => {           // one delegated listener for all cards
+      if (e.target.closest('a')) return;                      // calendar link: don't flip back
+      const card = e.target.closest('[data-flip]'); if (!card) return;
+      card.setAttribute('aria-pressed', card.classList.toggle('is-flipped'));
+    });
+    $('icsAll').addEventListener('click', () => this.calendar.downloadIcs(events));
+  }
+  #glossary() {
+    const { glossary, events, venues } = this.cfg, byId = Object.fromEntries(events.map(e => [e.id, e]));
+    $('dict').innerHTML = glossary.map(g => { const ev = byId[g.event]; return `
+      <article class="word" style="--tint:${ev.tint}">
+        <h3>${g.term}</h3>${g.say ? `<span class="say">say “${g.say}”</span>` : ''}
+        <p>${g.meaning}</p><span class="chip">${shortFmt.format(new Date(ev.start))} · ${ev.nick}</span>
+        <span class="chip venue-chip">${venues[ev.venue].name}</span></article>`; }).join('');
+  }
+  #venues() {
+    const { venues } = this.cfg, keys = Object.keys(venues), host = $('venueHost');
+    host.innerHTML = `<div class="tabs" role="tablist">${keys.map(k => `<button class="tab" role="tab" type="button" data-venue="${k}">${venues[k].tab || venues[k].name}</button>`).join('')}</div><div id="venuePanel" role="tabpanel"></div>`;
+    const tabs = [...host.querySelectorAll('.tab')];
+    const show = k => {                                       // map is created only for the venue being viewed
+      tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.venue === k));
+      $('venuePanel').innerHTML = this.#venueCard(venues[k]);
+    };
+    host.querySelector('.tabs').addEventListener('click', e => { const t = e.target.closest('[data-venue]'); if (t) show(t.dataset.venue); });
+    show(keys[0]);
+  }
+  #venueCard({ name, address, days, photo, mapQuery, mapLink }) {
+    const q = encodeURIComponent(mapQuery);
+    return `<div class="venue-card">
+      ${photo ? `<img class="photo" src="${photo}" alt="${name}" loading="lazy" decoding="async">` : ''}
+      <h3>${name}</h3><span class="when">${days}</span><p class="addr">${address}</p>
+      <iframe loading="lazy" title="Map of ${name}" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>
+      <a class="btn" target="_blank" rel="noopener" href="${mapLink}">Get directions</a></div>`;
+  }
+  #video() {
+    const id = this.cfg.videoFileId, box = $('videoBox');
+    box.innerHTML = '<button class="btn alt" id="play" type="button">▶ Play our video</button>'; // player loads only on tap
+    $('play').addEventListener('click', () => { box.innerHTML = id
+      ? `<iframe allow="autoplay" allowfullscreen title="Video invitation" src="https://drive.google.com/file/d/${id}/preview"></iframe>`
+      : '<p>Our video card is coming soon</p>'; });
+  }
+  #form() {
+    const form = $('rsvpForm');
+    const evs = this.cfg.events.map(e => `<label><input type="checkbox" name="events" value="${e.title}" checked> ${e.nick} · ${e.title}</label>`).join('');
+    form.innerHTML = `
+      <div><label for="name">Your name</label><input id="name" name="name" type="text" required autocomplete="name"></div>
+      <div><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="So we can reach you"></div>
+      <fieldset><legend>Can you make it?</legend>
+        <label><input type="radio" name="attending" value="Yes" checked> Joyfully yes</label>
+        <label><input type="radio" name="attending" value="No"> Sadly no</label></fieldset>
+      <div class="collapse open" id="yesBlock"><div>
+        <div><label for="guests">Number of guests (including you)</label><select id="guests" name="guests">${[1,2,3,4,5,6].map(n => `<option>${n}</option>`).join('')}</select></div>
+        <fieldset><legend>Which celebrations?</legend>${evs}</fieldset></div></div>
+      <div class="collapse" id="noBlock" inert><div>
+        <div><label for="reason">A small reason, please</label><textarea id="reason" name="reason" rows="2" placeholder="Just a line is enough"></textarea></div></div></div>
+      <div><label for="message">Message for the couple</label><textarea id="message" name="message" rows="2"></textarea></div>
+      <button class="btn" type="submit" id="send">Send RSVP</button>`;
+    form.addEventListener('change', e => { if (e.target.name === 'attending') this.#toggleNo(e.target.value === 'No'); });
+    form.addEventListener('submit', e => this.#submit(e));
+  }
+  #toggleNo(isNo) {                  // smooth swap between "yes" and "no" questions
+    $('yesBlock').classList.toggle('open', !isNo); $('yesBlock').inert = isNo;
+    $('noBlock').classList.toggle('open', isNo);   $('noBlock').inert = !isNo;
+    $('reason').required = isNo; $('phone').required = isNo;
+    if (isNo) setTimeout(() => $('reason').focus({ preventScroll:true }), 400);
+  }
+  async #submit(e) {
+    e.preventDefault();
+    const f = new FormData(e.target), btn = $('send'), isNo = f.get('attending') === 'No';
+    const data = { name:f.get('name').trim(), phone:f.get('phone').trim(), attending:isNo ? 'No' : 'Yes',
+      guests:isNo ? 0 : f.get('guests'), events:isNo ? [] : f.getAll('events'), reason:isNo ? f.get('reason').trim() : '', message:f.get('message').trim() };
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try { await this.rsvp.submit(data); this.#thanks(data, isNo); }
+    catch { btn.disabled = false; btn.textContent = 'Try again'; alert('Could not send. Please check your internet and try again.'); }
+  }
+  #thanks({ name }, isNo) {
+    const groom = this.cfg.groomFirstName;
+    const [art, title, text] = isNo
+      ? ['heart', `We'll miss you, ${name}`, `Let ${groom} handle this by calling you!`]
+      : ['lotus', `Thank you, ${name}!`, 'Your reply has reached us. See you at the celebrations!'];
+    const demo = this.rsvp.isConfigured ? '' : '<p class="sub" style="margin:12px 0 0">(Demo mode: connect your Google Sheet to save replies.)</p>';
+    $('rsvpForm').hidden = true;
+    $('thanksHost').innerHTML = `<div class="thanks"><div class="art">${Art[art]()}</div><h3>${title}</h3><p>${text}</p>${demo}</div>`;
+    $('thanksHost').scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+}
+
+/* ==========================================================
+   7. BOOTSTRAP: wire everything together
+   ========================================================== */
+(function main() {
+  const { couple, venues, weddingDate, rsvpEndpoint } = CONFIG;
+  new InvitationView(CONFIG, new CalendarService(venues, couple), new RsvpService(rsvpEndpoint)).render();
+  new TiltEffect($('stage'), $('card'));
+  new PetalField($('petals'));
+  new Countdown($('count'), weddingDate);
+})();
+</script>
+</body>
+</html>
