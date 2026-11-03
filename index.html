@@ -212,7 +212,7 @@ const CONFIG = {
     meaning: 'O Ganesha of the curved trunk, radiant as a million suns, remove all obstacles from our every work.',
   },
   // Sheet: https://docs.google.com/spreadsheets/d/1G8tqxxhfQMZcPIwHmSCQ8VPDjDJeOukuBR71m06QxGA
-  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbxmosddhjzkNpbyQNjob9IbK-33PdvuHOVKN7f0__MhJyLlkvgDx13UFjVFsIFGDjJU/exec',
+  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbwF5YgbkvTMQM7tPKt4J-mn1T7PPvAu6jgAnWvuyLh8pVi85uHlmyGsV-vxrOXSIljy/exec',
   videoFile: 'video.mp4',
   venues: {   // order here = order of the tabs (tab = short label for phones)
     resort: {
@@ -334,11 +334,13 @@ class RsvpService {
       reason: data.reason || '',
       message: data.message || '',
     });
-    // Apps Script redirects can hang fetch — never block the UI forever
-    await Promise.race([
-      fetch(this.endpoint, { method: 'POST', mode: 'no-cors', body }).catch(() => {}),
-      new Promise(resolve => setTimeout(resolve, 4000)),
-    ]);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    try {
+      await fetch(this.endpoint, { method: 'POST', mode: 'no-cors', body, signal: controller.signal });
+    } finally {
+      clearTimeout(timeout);
+    }
   }
 }
 
