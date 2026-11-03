@@ -235,7 +235,8 @@ const CONFIG = {
   // nick = fun name, title = traditional name, art = illustration (see Art), venue = key from venues
   events: [
     { id:'day1', nick:'The Golden Glow Day',  title:'Haldi & Mehndi', art:'marigold', venue:'residence', tint:'#FFE3A3', start:'2026-12-03T11:00:00+05:30', end:'2026-12-03T23:00:00+05:30', blurb:'Join us for turmeric, henna and a joyful day with family. Wear something you don’t mind getting a little colorful!' },
-    { id:'day2', nick:'The Seven Promises',   title:'Pheras & Wedding Dinner',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Seven rounds around the sacred fire, seven promises for life. Then a big wedding feast, so come hungry!' },
+    { id:'day2', nick:'The Seven Promises',   title:'Sath Phere',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T11:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Celebrate the Varmala, seven rounds around the sacred fire, and seven promises for life. Then a big wedding feast, so come hungry!' },
+    { id:'day3', nick:'The Royal Exchange',   title:'Varmala with Wedding Dinner',   art:'varmala', venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T19:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Celebrate the garland exchange, Then a big wedding feast, so come hungry!' },
     { id:'day3', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
   ],
 
@@ -279,6 +280,11 @@ const Art = {
     <path d="M14 56H86C86 76 70 88 50 88C30 88 14 76 14 56Z" fill="#F2799A"/><path d="M22 62H78" stroke="#FFD9DF" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/>`),
   lotus: () => svg(`${[-62,-31,0,31,62].map((a, i) => `<ellipse cx="50" cy="48" rx="11" ry="30" fill="${i % 2 ? '#F59BB0' : '#F2799A'}" transform="rotate(${a} 50 82)"/>`).join('')}
     <ellipse cx="50" cy="50" rx="10" ry="30" fill="#FFD9DF" stroke="#F2799A" stroke-width="2"/><path d="M14 86Q50 98 86 86" fill="none" stroke="#9ED8B4" stroke-width="5" stroke-linecap="round"/>`),
+  varmala: () => svg(`<path d="M30 19C30 48 36 78 50 84C64 78 70 48 70 19" fill="none" stroke="#9ED8B4" stroke-width="7" stroke-linecap="round"/>
+    <path d="M30 19C30 48 36 78 50 84C64 78 70 48 70 19" fill="none" stroke="#F2799A" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9"/>
+    ${[[30,23],[31,37],[34,51],[39,65],[46,77],[54,77],[61,65],[66,51],[69,37],[70,23]].map(([x,y],i) => `<g transform="translate(${x} ${y})"><circle r="5.5" fill="${i%2?'#FFB02E':'#F2799A'}"/><circle r="2" fill="#FFF6EA"/></g>`).join('')}
+    <path d="M30 15L25 8M30 15L35 8M70 15L65 8M70 15L75 8" stroke="#9ED8B4" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="25" cy="8" r="3" fill="#FFB02E"/><circle cx="35" cy="8" r="3" fill="#F2799A"/><circle cx="65" cy="8" r="3" fill="#F2799A"/><circle cx="75" cy="8" r="3" fill="#FFB02E"/>`),
   peacock: () => svg(`${[-40,-20,0,20,40].map(a => `<g transform="rotate(${a} 50 90)"><ellipse cx="50" cy="38" rx="10" ry="22" fill="#9ED8B4"/><ellipse cx="50" cy="34" rx="5.5" ry="9" fill="#FFB02E"/><circle cx="50" cy="32" r="3" fill="#F2799A"/></g>`).join('')}
     <ellipse cx="50" cy="82" rx="11" ry="13" fill="#7CCBA0"/><circle cx="50" cy="66" r="7" fill="#7CCBA0"/><path d="M50 58L47 52M50 58L53 52" stroke="#F2799A" stroke-width="2" stroke-linecap="round"/><circle cx="52" cy="65" r="1.6" fill="#7A2E45"/>`),
   heart: () => svg('<path d="M50 86C12 58 12 26 33 22C44 20 50 29 50 33C50 29 56 20 67 22C88 26 88 58 50 86Z" fill="#F2799A"/><path d="M30 34C32 30 37 30 39 33" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>'),
