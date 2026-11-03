@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFD9DF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -171,7 +171,7 @@ footer .art{width:56px;height:56px;margin:0 auto 6px}
 <body>
 <div class="watermark" aria-hidden="true"></div>
 <div id="petals" aria-hidden="true"></div>
-<audio id="bgMusic" src="music.mp3" preload="metadata" playsinline loop></audio>
+<audio id="bgMusic" src="music.mp3" preload="metadata" playsinline></audio>
 
 <header class="hero">
   <div class="stage" id="stage">
@@ -232,13 +232,21 @@ const CONFIG = {
     },
   },
   // nick = fun name, title = traditional name, art = illustration (see Art), venue = key from venues
+  // events: [
+  //   { id:'day1', nick:'The Golden Glow Day',  title:'Haldi, Mehndi & Cocktail', art:'marigold', venue:'dharmshala', tint:'#FFE3A3', start:'2026-12-02T11:00:00+05:30', end:'2026-12-02T23:00:00+05:30', blurb:'Get yellow, get henna-ed, then get glam! Smear turmeric, flaunt henna art, then dress up for a cocktail evening. Wear something you don’t mind staining!' },
+  //   { id:'day2', nick:'The Royal Entry',      title:'Ghudchadi & Baraat',       art:'horse',    venue:'dharmshala', tint:'#FFD0DA', start:'2026-12-03T16:00:00+05:30', end:'2026-12-03T22:00:00+05:30', blurb:'The groom arrives like royalty on a decorated mare while the dhol beats and everyone dances in. Two left feet are welcome!' },
+  //   { id:'day3', nick:'The Seven Promises',   title:'Pheras & Wedding Dinner',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Seven rounds around the sacred fire, seven promises for life. Then a big wedding feast, so come hungry!' },
+  //   { id:'day4', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
+  // ],
+
+  // nick = fun name, title = traditional name, art = illustration (see Art), venue = key from venues
   events: [
-    { id:'day1', nick:'The Golden Glow Day',  title:'Haldi, Mehndi & Cocktail', art:'marigold', venue:'dharmshala', tint:'#FFE3A3', start:'2026-12-02T11:00:00+05:30', end:'2026-12-02T23:00:00+05:30', blurb:'Get yellow, get henna-ed, then get glam! Smear turmeric, flaunt henna art, then dress up for a cocktail evening. Wear something you don’t mind staining!' },
-    { id:'day2', nick:'The Royal Entry',      title:'Ghudchadi & Baraat',       art:'horse',    venue:'dharmshala', tint:'#FFD0DA', start:'2026-12-03T16:00:00+05:30', end:'2026-12-03T22:00:00+05:30', blurb:'The groom arrives like royalty on a decorated mare while the dhol beats and everyone dances in. Two left feet are welcome!' },
-    { id:'day3', nick:'The Seven Promises',   title:'Pheras & Wedding Dinner',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Seven rounds around the sacred fire, seven promises for life. Then a big wedding feast, so come hungry!' },
-    { id:'day4', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
+    { id:'day1', nick:'The Golden Glow Day',  title:'Haldi & Mehndi', art:'marigold', venue:'At Residence', tint:'#FFE3A3', start:'2026-12-03T11:00:00+05:30', end:'2026-12-03T23:00:00+05:30', blurb:'Get yellow, get henna-ed, then get glam! Smear turmeric, flaunt henna art, then dress up for a cocktail evening. Wear something you don’t mind staining!' },
+    // { id:'day2', nick:'The Royal Entry',      title:'Ghudchadi & Baraat',       art:'horse',    venue:'dharmshala', tint:'#FFD0DA', start:'2026-12-03T16:00:00+05:30', end:'2026-12-03T22:00:00+05:30', blurb:'The groom arrives like royalty on a decorated mare while the dhol beats and everyone dances in. Two left feet are welcome!' },
+    { id:'day2', nick:'The Seven Promises',   title:'Pheras & Wedding Dinner',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Seven rounds around the sacred fire, seven promises for life. Then a big wedding feast, so come hungry!' },
+    { id:'day3', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:3₀', end:'2₀₂₆-1₂-₀₅T₂₃:59:₀₀+₀₅:₃₀', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
   ],
-  
+
   // the "Wedding Dictionary" cheat sheet; event = which day it belongs to
   glossary: [
     { term:'The Yellow Affair:Haldi',     say:'HUL-dee',   event:'day1', meaning:'A turmeric paste is smeared on the bride and groom for a golden glow and good luck. Yes, everyone ends up yellow!' },
@@ -248,7 +256,7 @@ const CONFIG = {
     { term:'The Royal Procession: Baraat',    say:'buh-RAAT',  event:'day2', meaning:'The groom’s party dances its way to the venue with drums and dhol. Dancing is compulsory, skills are optional.' },
     { term:'Forever, in Seven: Pheras',     say:'FAY-raas',   event:'day3', meaning:'Seven rounds around the sacred fire, and each round is a promise the couple makes to each other. The heart of the wedding.' },
     { term:'The Royal Exchange: Varmala',     say:'VAR-mah-lah',   event:'day3', meaning:'A garland of flowers worn by the bride and groom to symbolize their union in one soul.' },
-    { term:'The Wedding Soirée: Sangeet Night',   say:'SUNG-geet', event:'day4', meaning:'A night of songs, dance-offs and family performances to celebrate the newlyweds.' },
+    { term:'The Wedding Soirée: Sangeet Night',   say:'SUNG-geet', event:'day3', meaning:'A night of songs, dance-offs and family performances to celebrate the newlyweds.' },
   ],
 };
 
@@ -375,7 +383,11 @@ class BackgroundMusic {
     this.pausedForVideo = false;
     this.wasPlaying = false;
     audio.volume = 0.8;
-    audio.loop = true;
+    audio.addEventListener('ended', () => {
+      if (this.pausedForVideo) return;
+      audio.currentTime = BackgroundMusic.START_AT;
+      audio.play().catch(() => {});
+    });
     // Mobile browsers need a tap — unlock on first interaction / Open invitation
     const unlock = () => this.play();
     ['pointerdown', 'touchstart', 'click'].forEach(t =>
@@ -563,8 +575,9 @@ class InvitationView {
   }
   #thanks({ name }, isNo) {
     const groom = this.cfg.groomFirstName;
+    const bride = this.cfg.brideFirstName;
     const [art, title, text] = isNo
-      ? ['heart', `We'll miss you, ${name}`, `Let ${groom} handle this by calling you!`]
+      ? ['heart', `We'll miss you, ${name}`, `Let ${bride} handle this by calling you!`]
       : ['lotus', `Thank you, ${name}!`, 'Your reply has reached us. See you at the celebrations!'];
     const demo = this.rsvp.isConfigured ? '' : '<p class="sub" style="margin:12px 0 0">(Demo mode: connect your Google Sheet to save replies.)</p>';
     $('rsvpForm').hidden = true;
