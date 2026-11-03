@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
-<title>Arpit & Muskan · Wedding Invitation</title>
+<title>Muskan weds Arpit · Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Yeseva+One&family=Quicksand:wght@400;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
@@ -124,6 +124,7 @@ svg{display:block;width:100%;height:100%}
 .video-overlay{position:fixed;inset:0;z-index:100;background:#000;display:grid;place-items:center;
   padding:var(--safe-top) 0 var(--safe-bottom);animation:fadeIn .25s ease}
 .video-overlay video{width:100%;height:100%;max-height:100dvh;object-fit:contain;background:#000}
+.video-status{position:absolute;left:16px;right:16px;bottom:calc(16px + var(--safe-bottom));z-index:2;color:#fff;text-align:center;text-shadow:0 1px 4px #000}
 .video-close{position:absolute;top:calc(10px + var(--safe-top));right:max(12px,env(safe-area-inset-right));z-index:2;
   width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);font:700 1.35rem/1 var(--font-body);
   cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);touch-action:manipulation}
@@ -203,6 +204,7 @@ const CONFIG = {
   couple: { groom: 'Arpit', bride: 'Muskan' },
   hosts: 'The Families',
   groomFirstName: 'Arpit',                                   // used in the RSVP "no" reply
+  brideFirstName: 'Muskan',
   weddingDate: '2026-12-04T18:00:00+05:30',
   tagline: 'Your presence is all that matters to us',
   mantra: {
@@ -212,12 +214,6 @@ const CONFIG = {
   rsvpEndpoint: 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE',  // see apps-script.gs
   videoFile: 'video.mp4',
   venues: {   // order here = order of the tabs (tab = short label for phones)
-    dharmshala: {
-      name: 'Smt. Bhagwan Devi Dharmshala', tab: 'Dharmshala', days: '2 – 3 December',
-      address: 'Bombay Wala Petch, Gudiyabagh, Aligarh, Uttar Pradesh 202001',
-      mapQuery: 'Smt. Bhagwan Devi Dharmshala, Bombay Wala Petch, Gudiyabagh, Aligarh, Uttar Pradesh 202001',
-      mapLink: 'https://maps.app.goo.gl/AMtBPK1gdcmwoNz56?g_st=ic',
-    },
     resort: {
       name: 'Hotel Gayatri Palace', tab: 'Hotel Gayatri Palace', days: '4 December · Phere & Wedding', photo: 'venue.jpg',
       address: 'Gular Road, Shakti Nagar, Gular Rd, Aligarh, Uttar Pradesh 202001',
@@ -230,21 +226,16 @@ const CONFIG = {
       mapQuery: 'Mantra Banquet Hall, Gular Rd, Nagla Masani, Aligarh, Uttar Pradesh 202001',
       mapLink: 'https://maps.app.goo.gl/Fq9xw3xbEBRnEMKS7?g_st=ic',
     },
+    residence: {
+      name: 'At Residence', tab: 'Residence', days: '3 December · Haldi & Mehndi',
+      address: 'Address shared privately with invited guests.',
+    },
   },
   // nick = fun name, title = traditional name, art = illustration (see Art), venue = key from venues
-  // events: [
-  //   { id:'day1', nick:'The Golden Glow Day',  title:'Haldi, Mehndi & Cocktail', art:'marigold', venue:'dharmshala', tint:'#FFE3A3', start:'2026-12-02T11:00:00+05:30', end:'2026-12-02T23:00:00+05:30', blurb:'Get yellow, get henna-ed, then get glam! Smear turmeric, flaunt henna art, then dress up for a cocktail evening. Wear something you don’t mind staining!' },
-  //   { id:'day2', nick:'The Royal Entry',      title:'Ghudchadi & Baraat',       art:'horse',    venue:'dharmshala', tint:'#FFD0DA', start:'2026-12-03T16:00:00+05:30', end:'2026-12-03T22:00:00+05:30', blurb:'The groom arrives like royalty on a decorated mare while the dhol beats and everyone dances in. Two left feet are welcome!' },
-  //   { id:'day3', nick:'The Seven Promises',   title:'Pheras & Wedding Dinner',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Seven rounds around the sacred fire, seven promises for life. Then a big wedding feast, so come hungry!' },
-  //   { id:'day4', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
-  // ],
-
-  // nick = fun name, title = traditional name, art = illustration (see Art), venue = key from venues
   events: [
-    { id:'day1', nick:'The Golden Glow Day',  title:'Haldi & Mehndi', art:'marigold', venue:'At Residence', tint:'#FFE3A3', start:'2026-12-03T11:00:00+05:30', end:'2026-12-03T23:00:00+05:30', blurb:'Get yellow, get henna-ed, then get glam! Smear turmeric, flaunt henna art, then dress up for a cocktail evening. Wear something you don’t mind staining!' },
-    // { id:'day2', nick:'The Royal Entry',      title:'Ghudchadi & Baraat',       art:'horse',    venue:'dharmshala', tint:'#FFD0DA', start:'2026-12-03T16:00:00+05:30', end:'2026-12-03T22:00:00+05:30', blurb:'The groom arrives like royalty on a decorated mare while the dhol beats and everyone dances in. Two left feet are welcome!' },
+    { id:'day1', nick:'The Golden Glow Day',  title:'Haldi & Mehndi', art:'marigold', venue:'residence', tint:'#FFE3A3', start:'2026-12-03T11:00:00+05:30', end:'2026-12-03T23:00:00+05:30', blurb:'Join us for turmeric, henna and a joyful day with family. Wear something you don’t mind getting a little colorful!' },
     { id:'day2', nick:'The Seven Promises',   title:'Pheras & Wedding Dinner',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T18:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Seven rounds around the sacred fire, seven promises for life. Then a big wedding feast, so come hungry!' },
-    { id:'day3', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:3₀', end:'2₀₂₆-1₂-₀₅T₂₃:59:₀₀+₀₅:₃₀', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
+    { id:'day3', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
   ],
 
   // the "Wedding Dictionary" cheat sheet; event = which day it belongs to
@@ -252,10 +243,8 @@ const CONFIG = {
     { term:'The Yellow Affair:Haldi',     say:'HUL-dee',   event:'day1', meaning:'A turmeric paste is smeared on the bride and groom for a golden glow and good luck. Yes, everyone ends up yellow!' },
     // { term:'Mehndi',    say:'MEHN-dee',  event:'day1', meaning:'Beautiful henna art on hands and feet. Look for the groom’s name hidden in the bride’s design, and keep your hands still until it dries.' },
     // { term:'Cocktail',  say:'',          event:'day1', meaning:'The dress-up evening: music, mingling and a toast to the couple.' },
-    { term:'The Royal Ride:Ghudchadi', say:'GHOO-dee-chuh-dee', event:'day2', meaning:'The groom hops on a decorated mare for his royal moment before heading to the wedding.' },
-    { term:'The Royal Procession: Baraat',    say:'buh-RAAT',  event:'day2', meaning:'The groom’s party dances its way to the venue with drums and dhol. Dancing is compulsory, skills are optional.' },
-    { term:'Forever, in Seven: Pheras',     say:'FAY-raas',   event:'day3', meaning:'Seven rounds around the sacred fire, and each round is a promise the couple makes to each other. The heart of the wedding.' },
-    { term:'The Royal Exchange: Varmala',     say:'VAR-mah-lah',   event:'day3', meaning:'A garland of flowers worn by the bride and groom to symbolize their union in one soul.' },
+    { term:'Forever, in Seven: Pheras',     say:'FAY-raas',   event:'day2', meaning:'Seven rounds around the sacred fire, and each round is a promise the couple makes to each other. The heart of the wedding.' },
+    { term:'The Royal Exchange: Varmala',     say:'VAR-mah-lah',   event:'day2', meaning:'A garland of flowers worn by the bride and groom to symbolize their union in one soul.' },
     { term:'The Wedding Soirée: Sangeet Night',   say:'SUNG-geet', event:'day3', meaning:'A night of songs, dance-offs and family performances to celebrate the newlyweds.' },
   ],
 };
@@ -311,7 +300,7 @@ const $ = id => document.getElementById(id);
    4. SERVICES: one responsibility per class
    ========================================================== */
 class CalendarService {
-  constructor(venues, couple) { this.venues = venues; this.title = `${couple.groom} & ${couple.bride}`; }
+  constructor(venues, couple) { this.venues = venues; this.title = `${couple.bride} weds ${couple.groom}`; }
   where(ev) { const v = this.venues[ev.venue]; return `${v.name}, ${v.address}`; }
   googleUrl(ev) {
     return 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
@@ -448,12 +437,12 @@ class InvitationView {
   render() {
     const { couple, weddingDate, hosts, mantra, tagline } = this.cfg;
     document.querySelectorAll('[data-art]').forEach(n => { n.innerHTML = Art[n.dataset.art](); });
-    $('names').innerHTML = `${couple.groom}<br>&amp;<br>${couple.bride}`;
+    $('names').innerHTML = `${couple.bride}<br>weds<br>${couple.groom}`;
     $('mantra').textContent = mantra.text; $('meaning').textContent = mantra.meaning;
     [$('tagline'), $('footerTagline')].forEach(n => { n.textContent = tagline; });
     $('rsvpSub').textContent = tagline + '. Please let us know if you can join.';
     $('heroDate').textContent = `${fmtDay(weddingDate)}, 2026`;
-    $('footerNote').innerHTML = `With love, ${hosts}<br><span class="script">${couple.groom} &amp; ${couple.bride}</span>`;
+    $('footerNote').innerHTML = `With love, ${hosts}<br><span class="script">${couple.bride} weds ${couple.groom}</span>`;
     this.#events(); this.#glossary(); this.#venues(); this.#video(); this.#form();
   }
   #events() {
@@ -493,12 +482,12 @@ class InvitationView {
     show(keys[0]);
   }
   #venueCard({ name, address, days, photo, mapQuery, mapLink }) {
-    const q = encodeURIComponent(mapQuery);
+    const map = mapQuery ? `<iframe loading="lazy" title="Map of ${name}" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&amp;output=embed"></iframe>` : '';
+    const directions = mapLink ? `<a class="btn" target="_blank" rel="noopener noreferrer" href="${mapLink}">Get directions</a>` : '';
     return `<div class="venue-card">
       ${photo ? `<img class="photo" src="${photo}" alt="${name}" loading="lazy" decoding="async">` : ''}
       <h3>${name}</h3><span class="when">${days}</span><p class="addr">${address}</p>
-      <iframe loading="lazy" title="Map of ${name}" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>
-      <a class="btn" target="_blank" rel="noopener" href="${mapLink}">Get directions</a></div>`;
+      ${map}${directions}</div>`;
   }
   #video() {
     const src = this.cfg.videoFile, box = $('videoBox'), music = this.music;
@@ -511,18 +500,21 @@ class InvitationView {
     overlay.className = 'video-overlay';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-label', 'Video invitation');
+    overlay.setAttribute('aria-modal', 'true');
     overlay.innerHTML = `<button class="video-close" type="button" aria-label="Close video">×</button>
       <video id="inviteVideo" controls playsinline webkit-playsinline preload="auto" title="Video invitation">
         <source src="${src}" type="video/mp4">
-      </video>`;
+      </video><p class="video-status" aria-live="polite"></p>`;
     document.body.appendChild(overlay);
     document.body.classList.add('video-open');
 
     const v = overlay.querySelector('video');
+    const status = overlay.querySelector('.video-status');
     let closed = false;
     const close = () => {
       if (closed) return;
       closed = true;
+      document.removeEventListener('keydown', onEsc);
       v.pause();
       v.removeAttribute('src');
       v.load();
@@ -530,14 +522,18 @@ class InvitationView {
       document.body.classList.remove('video-open');
       music?.resume();
     };
+    const onEsc = e => { if (e.key === 'Escape') close(); };
 
     overlay.querySelector('.video-close').addEventListener('click', close);
     overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
     v.addEventListener('ended', close);
-    document.addEventListener('keydown', function onEsc(e) {
-      if (e.key === 'Escape') { close(); document.removeEventListener('keydown', onEsc); }
+    v.addEventListener('error', () => {
+      if (!closed) status.textContent = 'The video could not be loaded. Please check that video.mp4 is available and encoded as a browser-compatible MP4.';
     });
-    v.play().catch(() => {});
+    document.addEventListener('keydown', onEsc);
+    v.play().catch(error => {
+      if (!closed && error.name !== 'AbortError') status.textContent = 'If playback did not start, tap Play in the video controls.';
+    });
   }
   #form() {
     const form = $('rsvpForm');
