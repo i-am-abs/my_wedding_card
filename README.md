@@ -1,10 +1,5 @@
 # Arpit & Muskan · Wedding Invitation
 
-## Connect RSVP form → Google Sheet
-
-RSVP replies are saved to:
-https://docs.google.com/spreadsheets/d/1G8tqxxhfQMZcPIwHmSCQ8VPDjDJeOukuBR71m06QxGA
-
 ### One-time setup
 
 1. Open that Google Sheet → **Extensions → Apps Script**
