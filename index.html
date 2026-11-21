@@ -103,6 +103,18 @@ svg{display:block;width:100%;height:100%}
 .chip{display:inline-block;background:var(--blush);border-radius:999px;padding:2px 12px;font-size:.76rem;font-weight:700;margin-top:8px}
 .chip.venue-chip{background:#fff;border:1px solid var(--tint)}
 .hint{font-size:.78rem;opacity:.7}
+/* family / RSVP names — square cards like wedding dictionary */
+.families{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;text-align:left;margin:0 auto 8px}
+.family-block{background:#fff;border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border-top:6px solid var(--tint);min-height:140px;display:flex;flex-direction:column}
+.family-block h3{font-size:clamp(1.1rem,4.5vw,1.35rem);margin-bottom:6px;color:var(--ink)}
+.family-block .lineage{font-size:.88rem;color:var(--ink-soft);margin-bottom:4px;line-height:1.45}
+.family-block .names-list{font-size:clamp(.88rem,3.4vw,.98rem);line-height:1.7;margin-top:4px;flex:1}
+.family-block .who{font-weight:700;font-size:1.05rem;color:var(--rose);margin-bottom:4px}
+.quote{max-width:560px;margin:22px auto 0;font-family:var(--font-script);font-size:clamp(1.35rem,5vw,1.85rem);line-height:1.35;color:var(--rose);text-align:center}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.contact-row a{font-weight:700;color:var(--ink);text-decoration:none;background:#fff;border-radius:999px;padding:10px 16px;min-height:44px;display:inline-flex;align-items:center;box-shadow:var(--shadow);font-size:.9rem}
+.firms{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;margin-top:14px;font-size:.82rem;color:var(--ink-soft)}
+.firms span{background:var(--blush);border-radius:999px;padding:4px 12px}
 .back p{font-size:.88rem}.back .where{font-size:.8rem;font-weight:700;color:var(--rose)}
 .back .actions{margin-top:8px}
 
@@ -181,7 +193,7 @@ footer .art{width:56px;height:56px;margin:0 auto 6px}
       <span class="deco" data-art="marigold" aria-hidden="true"></span><span class="deco" data-art="diya" aria-hidden="true"></span>
       <span class="deco" data-art="lotus" aria-hidden="true"></span><span class="deco" data-art="peacock" aria-hidden="true"></span>
       <div class="layer l1"><div class="om deva">ॐ</div><p class="deva">श्री गणेशाय नमः</p><p class="mantra deva" id="mantra"></p><p class="meaning" id="meaning"></p></div>
-      <div class="layer l2"><p>Together with our families</p><h1 class="names" id="names"></h1><p>joyfully invite you to our wedding</p><p class="tagline" id="tagline"></p></div>
+      <div class="layer l2"><p>Together with our families</p><h1 class="names" id="names"></h1><p id="hostLine"></p><p class="tagline" id="tagline"></p></div>
       <div class="layer l3"><span class="date-pill" id="heroDate"></span><br><a class="btn" href="#events">Open the invitation</a></div>
     </div>
   </div>
@@ -192,9 +204,10 @@ footer .art{width:56px;height:56px;margin:0 auto 6px}
   <p style="margin-top:26px"><button class="btn alt" id="icsAll" type="button">Add all days to calendar (.ics)</button></p></section>
 <section id="dictionary"><h2>Wedding Dictionary</h2><p class="sub">New to desi weddings? Here’s your cheat sheet</p><div class="dict" id="dict"></div></section>
 <section id="venue"><h2>The Venues</h2><p class="sub">Come celebrate with us in style</p><div id="venueHost"></div></section>
+<section id="families"><h2>Seeking your presence</h2><p class="sub">With love from our families</p><div class="families" id="familiesHost"></div><p class="quote" id="marriageQuote"></p></section>
 <section id="video"><h2>A little message for you</h2><p class="sub">Our video invitation</p><div class="video" id="videoBox"></div></section>
-<section id="rsvp"><h2>Will you join us?</h2><p class="sub" id="rsvpSub"></p><form id="rsvpForm"></form><div id="thanksHost" aria-live="polite"></div></section>
-<footer><div class="art" data-art="lotus" aria-hidden="true"></div><p class="deva">शुभ विवाह</p><p class="tagline" id="footerTagline"></p><p id="footerNote"></p></footer>
+<section id="rsvp"><h2>Will you join us?</h2><p class="sub" id="rsvpSub"></p><div class="contact-row" id="rsvpContacts"></div><form id="rsvpForm"></form><div id="thanksHost" aria-live="polite"></div></section>
+<footer><div class="art" data-art="lotus" aria-hidden="true"></div><p class="deva">शुभ विवाह</p><p class="tagline" id="footerTagline"></p><p id="footerNote"></p><div class="firms" id="firmsHost"></div></footer>
 
 <script>
 /* ==========================================================
@@ -202,18 +215,62 @@ footer .art{width:56px;height:56px;margin:0 auto 6px}
    ========================================================== */
 const CONFIG = {
   couple: { groom: 'Arpit', bride: 'Muskan' },
-  hosts: 'The Families',
+  hosts: 'Smt. Jaya & Shri Deepak Babu Varshney',
   groomFirstName: 'Arpit',                                   // used in the RSVP "no" reply
   brideFirstName: 'Muskan',
   weddingDate: '2026-12-04T18:00:00+05:30',
   tagline: 'Your presence is all that matters to us',
+  quote: 'Marriage is the meeting of hearts, joining them into one soul, and a sacred commitment to love & understand one another.',
   mantra: {
     text: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥',
     meaning: 'O Ganesha of the curved trunk, radiant as a million suns, remove all obstacles from our every work.',
   },
   // Sheet: https://docs.google.com/spreadsheets/d/1G8tqxxhfQMZcPIwHmSCQ8VPDjDJeOukuBR71m06QxGA
   rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbwF5YgbkvTMQM7tPKt4J-mn1T7PPvAu6jgAnWvuyLh8pVi85uHlmyGsV-vxrOXSIljy/exec',
+  rsvpPhones: ['9286480902', '8218573320'],                 // from invitation card
   videoFile: 'video.mp4',
+  // family: {
+  //   bride: {
+  //     title: 'The Bride',
+  //     name: 'Muskan',
+  //     parents: 'D/o Smt. Jaya & Shri Deepak Babu Varshney',
+  //     grandparents: 'Grand D/o Late Smt. Naresh Vati & Late Shri Harihar Dayal Varshney',
+  //   },
+  //   groom: {
+  //     title: 'The Groom',
+  //     name: 'Er. Arpit',
+  //     parents: 'S/o Smt. Pratibha & Er. Keerti Bhushan Ji',
+  //     grandparents: 'Grand S/o Smt. Urmila & Late Shri Suresh Chandra Ji',
+  //   },
+  // },
+  // "Seeking your presence" — RSVP / invitation names from the printed card
+  seekingPresence: [
+    'Shashi Varshney', 
+    'Rajni — Er. Sh. Gopal Varshney',
+    'Rachna — Narendra Kr. Varshney',
+    'Vineeta — Hemant Varshney', 
+    'Geetu — Amit Varshney',
+    'Dr. Deepti — Adv. Suresh Rotela', 
+    'Tripti — Er. Abhishek Gupta',
+    'Jagrati — Gr. Captain Joy Chandra', 
+    'CA Pragati — Er. Akash Varshney',
+  ],
+  withHumbleRegards: [
+    'Vinod Kr. Varshney', 
+    'Anil “Chachchu”',
+    'CA Sunil Kr. Varshney', 
+    'Bhanu Prakash',
+  ],
+  eagerToWelcome: [
+    'Loveneet, Bhuvnesh, Ravi',
+    'Er. Ankit, CA Prakhar',
+    'Er. Yugraj, Abhinav & Anmol Hari',
+  ],
+  firms: [
+    'S.K. Varshney & Associates · New Delhi',
+    'Print Shop · Aligarh',
+    'Shri Shyam Enterprises · Aligarh',
+  ],
   venues: {   // order here = order of the tabs (tab = short label for phones)
     resort: {
       name: 'Hotel Gayatri Palace', tab: 'Hotel Gayatri Palace', days: '4 December · Phere & Wedding', photo: 'venue.jpg',
@@ -221,33 +278,25 @@ const CONFIG = {
       mapQuery: 'Hotel Gayatri Palace, Gular Road, Shakti Nagar, Aligarh, Uttar Pradesh 202001',
       mapLink: 'https://maps.app.goo.gl/QyT7reSNPifiT2sX9?g_st=ic',
     },
-    mantra: {
-      name: 'Mantra Banquet Hall', tab: 'Mantra Hall', days: '5 December · Sangeet',
-      address: 'Gular Rd, Shakti Nagar, Nagla Masani, Aligarh, Uttar Pradesh 202001',
-      mapQuery: 'Mantra Banquet Hall, Gular Rd, Nagla Masani, Aligarh, Uttar Pradesh 202001',
-      mapLink: 'https://maps.app.goo.gl/Fq9xw3xbEBRnEMKS7?g_st=ic',
-    },
     residence: {
       name: 'At Residence', tab: 'Residence', days: '3 December · Haldi & Mehndi',
-      address: 'Address shared privately with invited guests.',
+      address: 'New Ashok Nagar Colony, Aligarh',
     },
   },
   // nick = fun name, title = traditional name, art = illustration (see Art), venue = key from venues
   events: [
     { id:'day1', nick:'The Golden Glow Day',  title:'Haldi & Mehndi', art:'marigold', venue:'residence', tint:'#FFE3A3', start:'2026-12-03T11:00:00+05:30', end:'2026-12-03T23:00:00+05:30', blurb:'Join us for turmeric, henna and a joyful day with family. Wear something you don’t mind getting a little colorful!' },
-    { id:'day2', nick:'The Seven Promises',   title:'Sath Phere',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T11:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Celebrate the seven rounds around the sacred fire, and seven promises for life!' },
-    { id:'day3', nick:'The Royal Exchange',   title:'Varmala with Wedding Dinner',   art:'varmala', venue:'resort',     tint:'#FFD9DF', start:'2026-12-04T19:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Celebrate the garland exchange, Then a big wedding feast, so come hungry!' },
-    { id:'day3', nick:'The Dance-Off Night',  title:'Sangeet',                  art:'dholak',   venue:'mantra',     tint:'#CDEBD8', start:'2026-12-05T19:00:00+05:30', end:'2026-12-05T23:59:00+05:30', blurb:'Songs, dance-offs and family performances. Rehearsed or not, the whole floor is yours!' },
+    { id:'day2', nick:'The Seven Promises',   title:'Sath Phere',   art:'fire',     venue:'resort',     tint:'#FFC9A8', start:'2026-12-04T13:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Celebrate the seven rounds around the sacred fire at 1:00 p.m., and seven promises for life!' },
+    { id:'day3', nick:'The Royal Exchange',   title:'Varmala with Wedding Dinner',   art:'varmala', venue:'resort',     tint:'#FFD9DF', start:'2026-12-04T19:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'Dinner from 7:00 p.m., Jaymala at 9:00 p.m. — celebrate the garland exchange, then a big wedding feast, so come hungry!' },
+    // { id:'day4', nick:'The Fond Farewell',    title:'Vidai',        art:'lotus',    venue:'resort',     tint:'#CDEBD8', start:'2026-12-04T23:00:00+05:30', end:'2026-12-05T00:30:00+05:30', blurb:'At 11:00 p.m., a tender farewell as Muskan begins her new journey with Arpit.' },
   ],
 
   // the "Wedding Dictionary" cheat sheet; event = which day it belongs to
   glossary: [
     { term:'The Yellow Affair:Haldi',     say:'HUL-dee',   event:'day1', meaning:'A turmeric paste is smeared on the bride and groom for a golden glow and good luck. Yes, everyone ends up yellow!' },
-    // { term:'Mehndi',    say:'MEHN-dee',  event:'day1', meaning:'Beautiful henna art on hands and feet. Look for the groom’s name hidden in the bride’s design, and keep your hands still until it dries.' },
-    // { term:'Cocktail',  say:'',          event:'day1', meaning:'The dress-up evening: music, mingling and a toast to the couple.' },
     { term:'Forever, in Seven: Pheras',     say:'FAY-raas',   event:'day2', meaning:'Seven rounds around the sacred fire, and each round is a promise the couple makes to each other. The heart of the wedding.' },
-    { term:'The Royal Exchange: Varmala',     say:'VAR-mah-lah',   event:'day2', meaning:'A garland of flowers worn by the bride and groom to symbolize their union in one soul.' },
-    { term:'The Wedding Soirée: Sangeet Night',   say:'SUNG-geet', event:'day3', meaning:'A night of songs, dance-offs and family performances to celebrate the newlyweds.' },
+    { term:'The Royal Exchange: Varmala',     say:'VAR-mah-lah',   event:'day3', meaning:'A garland of flowers worn by the bride and groom to symbolize their union in one soul.' },
+    // { term:'The Fond Farewell: Vidai',     say:'vi-DAA-ee',  event:'day4', meaning:'An emotional send-off when the bride leaves her parental home to begin married life.' },
   ],
 };
 
@@ -457,15 +506,40 @@ class Countdown {
 class InvitationView {
   constructor(cfg, calendar, rsvp, music) { this.cfg = cfg; this.calendar = calendar; this.rsvp = rsvp; this.music = music; }
   render() {
-    const { couple, weddingDate, hosts, mantra, tagline } = this.cfg;
+    const { couple, weddingDate, hosts, mantra, tagline, quote, rsvpPhones, firms } = this.cfg;
     document.querySelectorAll('[data-art]').forEach(n => { n.innerHTML = Art[n.dataset.art](); });
     $('names').innerHTML = `${couple.bride}<br>weds<br>${couple.groom}`;
     $('mantra').textContent = mantra.text; $('meaning').textContent = mantra.meaning;
+    $('hostLine').textContent = `${hosts}, joyfully invite you to their daughter's wedding`;
     [$('tagline'), $('footerTagline')].forEach(n => { n.textContent = tagline; });
     $('rsvpSub').textContent = tagline + '. Please let us know if you can join.';
     $('heroDate').textContent = `${fmtDay(weddingDate)}, 2026`;
     $('footerNote').innerHTML = `With love, ${hosts}<br><span class="script">${couple.bride} weds ${couple.groom}</span>`;
-    this.#events(); this.#glossary(); this.#venues(); this.#video(); this.#form();
+    if (quote) $('marriageQuote').textContent = quote;
+    if (rsvpPhones?.length) {
+      $('rsvpContacts').innerHTML = rsvpPhones.map(p => {
+        const pretty = p.replace(/(\d{5})(\d{5})/, '$1 $2');
+        return `<a href="tel:+91${p}">☎ ${pretty}</a>`;
+      }).join('');
+    }
+    if (firms?.length) $('firmsHost').innerHTML = firms.map(f => `<span>${f}</span>`).join('');
+    this.#events(); this.#glossary(); this.#venues(); this.#families(); this.#video(); this.#form();
+  }
+  #families() {
+    const { family, seekingPresence, withHumbleRegards, eagerToWelcome } = this.cfg;
+    const tints = ['#FFD9DF', '#FFC9A8', '#FFE3A3', '#CDEBD8', '#F59BB0'];
+    const person = (p, tint) => !p ? '' : `<article class="family-block" style="--tint:${tint}">
+      <h3>${p.title}</h3><p class="who">${p.name}</p>
+      <p class="lineage">${p.parents}</p><p class="lineage">${p.grandparents}</p></article>`;
+    const list = (title, lines, tint) => !lines?.length ? '' : `<article class="family-block" style="--tint:${tint}">
+      <h3>${title}</h3><p class="names-list">${lines.join('<br>')}</p></article>`;
+    $('familiesHost').innerHTML = [
+      person(family?.bride, tints[0]),
+      person(family?.groom, tints[1]),
+      list('Seeking your presence', seekingPresence, tints[2]),
+      list('With humble regards', withHumbleRegards, tints[3]),
+      list('Eager to welcome you', eagerToWelcome, tints[4]),
+    ].join('');
   }
   #events() {
     const { events, venues } = this.cfg;
